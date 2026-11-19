@@ -971,16 +971,21 @@ $('deleteAccountBtn').onclick = async () => {
  if(check !== 'DELETE'){
   if(check !== null) notify('Account deletion cancelled (you must type DELETE).');
   return;
- }
- try{
-  if(currentUser){
-   await supabaseClient.from('orbit_workspaces').delete().eq('user_id', currentUser.id);
-   try{ await supabaseClient.rpc('delete_user'); }catch{}
+ }try {
+  if (currentUser) {
+    const { error } = await supabaseClient.rpc('delete_user');
+    if (error) throw error;
   }
   localStorage.removeItem('orbit_local_accounts_v1');
   await logout();
-  notify(currentLang === 'rw' ? 'Konti n’amakuru yawe byasibwe burundu.' : 'Your workspace and account data have been deleted.');
- }catch(err){notify(err.message || 'Could not delete account.');}
+  notify(
+    currentLang === 'rw'
+      ? 'Konti n’amakuru yawe byasibwe burundu.'
+      : 'Your entire account and workspace data have been permanently deleted.'
+  );
+} catch (err) {
+  notify(err.message || 'Could not delete account.');
+}
 };
 
 /* ==================== HABITS ==================== */
