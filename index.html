@@ -9,50 +9,132 @@
 <title>ORBIT — Personal & Habit Workspace</title>
 <style>
 :root{--bg:#090b18;--panel:#101329;--panel2:#151a35;--card:#11162d;--line:#252b4b;--text:#f5f6ff;--muted:#9299b8;--purple:#873cff;--purple2:#b36cff;--cyan:#35d9d0;--green:#36d98a;--amber:#ffb547;--red:#ff647c;--shadow:0 18px 55px #0007}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#24134a 0,transparent 34%),var(--bg);color:var(--text);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
-button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}
-.auth-wrap{min-height:100vh;display:grid;place-items:center;padding:22px}.auth-card{width:min(100%,480px);padding:28px;border:1px solid #34345f;border-radius:24px;background:linear-gradient(145deg,#151831,#0d1022);box-shadow:var(--shadow)}
-.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.12em}.brand-mark{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--purple),#4c1ba8);font-size:22px;position:relative;overflow:hidden}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 80% 0%,#24134a 0,transparent 34%),var(--bg);color:var(--text);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--purple2);outline-offset:2px}
+.hidden{display:none!important}
+
+/* Auth */
+.auth-wrap{min-height:100vh;display:grid;place-items:center;padding:22px}
+.auth-card{width:min(100%,480px);padding:28px;border:1px solid #34345f;border-radius:24px;background:linear-gradient(145deg,#151831,#0d1022);box-shadow:var(--shadow)}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.12em}
+.brand-mark{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--purple),#4c1ba8);font-size:22px;position:relative;overflow:hidden}
 .brand-mark:after{content:"✦";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:25px;text-shadow:0 2px 8px #241044}
-.auth-card h1{font-size:27px;margin:24px 0 5px}.muted{color:var(--muted)}.auth-card p{margin:0 0 20px;color:var(--muted)}
-.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:12px;color:#b9bfd9;font-weight:650}.field input,.field select,.field textarea,.toolbar input,.toolbar select{width:100%;background:#0b0f22;border:1px solid var(--line);color:var(--text);padding:12px 13px;border-radius:11px;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--purple2);box-shadow:0 0 0 3px #873cff22}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.avatar-pick{display:flex;align-items:center;gap:14px;margin:15px 0}.avatar{width:58px;height:58px;border-radius:50%;object-fit:cover;background:#29234b;border:2px solid #7040bd}
-.btn{border:0;border-radius:12px;padding:11px 16px;font-weight:750;color:white;background:linear-gradient(100deg,#7129e9,#a044ff);box-shadow:0 7px 20px #702de944;transition:transform .12s,opacity .15s}.btn:active{transform:scale(.98)}.btn.secondary{background:#202644;box-shadow:none;border:1px solid var(--line)}.btn.danger{background:#542235;box-shadow:none}.btn.full{width:100%;margin-top:12px}.btn.sm{padding:7px 12px;font-size:12px;border-radius:10px}
-.switch-auth{text-align:center;margin-top:18px;color:var(--muted)}.switch-auth button{background:none;border:0;color:#c59aff;font-weight:700}
+.auth-card h1{font-size:27px;margin:24px 0 5px}
+.muted{color:var(--muted)}
+.auth-card p{margin:0 0 20px;color:var(--muted)}
+.field{display:grid;gap:6px;margin:12px 0}
+.field label{font-size:12px;color:#b9bfd9;font-weight:650}
+.field input,.field select,.field textarea,.toolbar input,.toolbar select{width:100%;background:#0b0f22;border:1px solid var(--line);color:var(--text);padding:12px 13px;border-radius:11px;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--purple2);box-shadow:0 0 0 3px #873cff22}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.avatar-pick{display:flex;align-items:center;gap:14px;margin:15px 0}
+.avatar{width:58px;height:58px;border-radius:50%;object-fit:cover;background:#29234b;border:2px solid #7040bd}
+.btn{border:0;border-radius:12px;padding:11px 16px;font-weight:750;color:white;background:linear-gradient(100deg,#7129e9,#a044ff);box-shadow:0 7px 20px #702de944;transition:transform .12s,opacity .15s}
+.btn:active{transform:scale(.98)}
+.btn.secondary{background:#202644;box-shadow:none;border:1px solid var(--line)}
+.btn.danger{background:#542235;box-shadow:none}
+.btn.full{width:100%;margin-top:12px}
+.btn.sm{padding:7px 12px;font-size:12px;border-radius:10px}
+.switch-auth{text-align:center;margin-top:18px;color:var(--muted)}
+.switch-auth button{background:none;border:0;color:#c59aff;font-weight:700}
 
-/* App Shell */
+/* App Layout */
 .app{display:grid;grid-template-columns:236px minmax(0,1fr);min-height:100vh;max-width:1800px;margin:auto}
-.sidebar{padding:20px 14px;border-right:1px solid var(--line);background:#0c1022dd;display:flex;flex-direction:column;gap:16px;position:sticky;top:0;height:100vh;overflow-y:auto}
-.side-brand{padding:0 10px 8px}.side-group-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:6px 12px 2px;font-weight:700}
-.side-nav{display:grid;gap:5px}.nav-btn{display:flex;align-items:center;gap:11px;padding:10px 12px;border:1px solid transparent;border-radius:12px;background:transparent;color:#aab1cf;text-align:left;font-weight:550;transition:all .15s}.nav-btn .ico{width:22px;text-align:center;font-size:16px}.nav-btn.active,.nav-btn:hover{background:linear-gradient(100deg,#5521a944,#231a48);border-color:#56328c;color:white}
-.side-bottom{margin-top:auto;padding-top:12px}.user-mini{display:flex;align-items:center;gap:10px;padding:11px;border:1px solid var(--line);border-radius:14px;background:#11162b}.user-mini img{width:36px;height:36px;object-fit:cover;border-radius:50%}.user-mini strong{display:block;font-size:12px}.user-mini small{color:var(--muted);font-size:11px}
+.sidebar{padding:20px 14px;border-right:1px solid var(--line);background:#0c1022dd;display:flex;flex-direction:column;gap:14px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.side-brand{padding:0 10px 6px}
+.side-group-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:6px 12px 2px;font-weight:700}
+.side-nav{display:grid;gap:4px}
+.nav-btn{display:flex;align-items:center;gap:11px;padding:10px 12px;border:1px solid transparent;border-radius:12px;background:transparent;color:#aab1cf;text-align:left;font-weight:550;transition:all .15s}
+.nav-btn .ico{width:22px;text-align:center;font-size:16px;flex-shrink:0}
+.nav-btn.active,.nav-btn:hover{background:linear-gradient(100deg,#5521a944,#231a48);border-color:#56328c;color:white}
+.side-bottom{margin-top:auto;padding-top:12px}
+.user-mini{display:flex;align-items:center;gap:10px;padding:11px;border:1px solid var(--line);border-radius:14px;background:#11162b}
+.user-mini img{width:36px;height:36px;object-fit:cover;border-radius:50%}
+.user-mini strong{display:block;font-size:12px}
+.user-mini small{color:var(--muted);font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px;display:block}
 
-.main{min-width:0;padding:0 26px 40px}.topbar{height:72px;display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:1px solid #202642;margin-bottom:20px}.topbar h2{font-size:18px;margin:0;display:flex;align-items:center;gap:10px}.top-actions{display:flex;align-items:center;gap:8px}.icon-btn{width:38px;height:38px;border-radius:12px;border:1px solid var(--line);background:#151a32;color:white;display:inline-grid;place-items:center}.icon-btn:hover{border-color:var(--purple2)}.top-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid #7740c8;cursor:pointer}
-.content{max-width:1450px;margin:auto}.welcome{display:flex;justify-content:space-between;align-items:end;margin:6px 0 18px;gap:12px;flex-wrap:wrap}.welcome h1{font-size:24px;margin:0}.welcome p{margin:4px 0 0;color:var(--muted)}
-.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:15px}.kpi,.panel{background:linear-gradient(145deg,#151a35,#10142a);border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 30px #0002}.kpi{padding:17px;position:relative;overflow:hidden}.kpi:after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;background:#813cff16;right:-40px;top:-50px}.kpi-top{display:flex;justify-content:space-between;color:#c1c6df;font-size:13px}.kpi-icon{width:34px;height:34px;border-radius:11px;background:#6d37b933;display:grid;place-items:center}.kpi strong{font-size:26px;display:block;margin:8px 0 0}.kpi small{color:var(--muted);font-size:11px}
+.main{min-width:0;padding:0 26px 40px}
+.topbar{height:72px;display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:1px solid #202642;margin-bottom:20px}
+.topbar h2{font-size:18px;margin:0}
+.top-actions{display:flex;align-items:center;gap:8px}
+.icon-btn{width:38px;height:38px;border-radius:12px;border:1px solid var(--line);background:#151a32;color:white;display:inline-grid;place-items:center;flex-shrink:0}
+.icon-btn:hover{border-color:var(--purple2)}
+.avatar-btn{padding:0;border:2px solid #7740c8;border-radius:50%;width:38px;height:38px;overflow:hidden;background:transparent;flex-shrink:0}
+.avatar-btn img{width:100%;height:100%;object-fit:cover;display:block}
 
-.layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(290px,1fr);gap:15px}.stack{display:grid;gap:15px;align-content:start}.panel{padding:18px;min-width:0}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;flex-wrap:wrap}.panel h3{margin:0;font-size:15px}.panel-sub{font-size:12px;color:var(--muted)}
-.chart{height:170px;display:flex;align-items:end;gap:12px;padding:12px 4px 0;border-bottom:1px solid var(--line)}.bar-wrap{height:100%;flex:1;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:7px;min-width:0}.bar{width:min(38px,80%);min-height:4px;border-radius:8px 8px 2px 2px;background:linear-gradient(180deg,#b16cff,#6429ce);box-shadow:0 0 18px #823dff33;transition:height .3s}.bar-label{font-size:10px;color:var(--muted)}.chart-legend{display:flex;justify-content:space-between;margin-top:13px;color:var(--muted);font-size:12px}
-.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.quick{border:1px solid #59418a;background:linear-gradient(145deg,#6332b8,#34205f);border-radius:15px;padding:15px;min-height:92px;color:#fff;text-align:left}.quick span{display:block;font-size:21px;margin-bottom:7px}.quick strong{font-size:12px}
-.priority-item{padding:11px 0;border-bottom:1px solid #242a46}.priority-item:last-child{border:0}.priority-item strong{font-size:13px}.priority-item small{display:block;color:var(--muted);margin-top:3px}
+.content{max-width:1450px;margin:auto}
+.welcome{display:flex;justify-content:space-between;align-items:end;margin:6px 0 18px;gap:12px;flex-wrap:wrap}
+.welcome h1{font-size:24px;margin:0}
+.welcome p{margin:4px 0 0;color:var(--muted)}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:15px}
+.kpi,.panel{background:linear-gradient(145deg,#151a35,#10142a);border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 30px #0002}
+.kpi{padding:17px;position:relative;overflow:hidden}
+.kpi:after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;background:#813cff16;right:-40px;top:-50px;pointer-events:none}
+.kpi-top{display:flex;justify-content:space-between;color:#c1c6df;font-size:13px}
+.kpi-icon{width:34px;height:34px;border-radius:11px;background:#6d37b933;display:grid;place-items:center}
+.kpi strong{font-size:26px;display:block;margin:8px 0 0}
+.kpi small{color:var(--muted);font-size:11px}
+
+.layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(290px,1fr);gap:15px}
+.stack{display:grid;gap:15px;align-content:start}
+.panel{padding:18px;min-width:0}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.panel h3{margin:0;font-size:15px}
+.panel-sub{font-size:12px;color:var(--muted)}
+.chart{height:170px;display:flex;align-items:end;gap:12px;padding:12px 4px 0;border-bottom:1px solid var(--line)}
+.bar-wrap{height:100%;flex:1;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:7px;min-width:0}
+.bar{width:min(38px,80%);min-height:4px;border-radius:8px 8px 2px 2px;background:linear-gradient(180deg,#b16cff,#6429ce);box-shadow:0 0 18px #823dff33;transition:height .3s}
+.bar-label{font-size:10px;color:var(--muted)}
+.chart-legend{display:flex;justify-content:space-between;margin-top:13px;color:var(--muted);font-size:12px}
+.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.quick{border:1px solid #59418a;background:linear-gradient(145deg,#6332b8,#34205f);border-radius:15px;padding:15px;min-height:92px;color:#fff;text-align:left}
+.quick span{display:block;font-size:21px;margin-bottom:7px}
+.quick strong{font-size:12px}
+.priority-item{padding:11px 0;border-bottom:1px solid #242a46}
+.priority-item:last-child{border:0}
+.priority-item strong{font-size:13px}
+.priority-item small{display:block;color:var(--muted);margin-top:3px}
 .pill{display:inline-flex;align-items:center;gap:5px;border:1px solid #58358a;color:#caa7ff;border-radius:30px;padding:4px 10px;font-size:11px;font-weight:650;background:#1a1438}
-.section{display:none}.section.active{display:block}.section-grid{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:15px}
-.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}.toolbar input{flex:1;min-width:150px}.list{display:grid;gap:10px}
-.list-row{display:flex;align-items:center;gap:12px;padding:13px;border:1px solid var(--line);background:#0e1328;border-radius:14px;transition:border-color .15s}.list-row:hover{border-color:#44327a}.list-row .grow{flex:1;min-width:0}.list-row strong{display:block;overflow-wrap:anywhere;font-size:14px}.list-row small{color:var(--muted);font-size:12px}.list-row.done strong{text-decoration:line-through;opacity:.6}.list-row input[type=checkbox]{accent-color:var(--purple);width:18px;height:18px;cursor:pointer}
+.section{display:none}
+.section.active{display:block}
+.section-grid{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:15px}
+.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}
+.toolbar input{flex:1;min-width:150px}
+.list{display:grid;gap:10px}
+.list-row{display:flex;align-items:center;gap:12px;padding:13px;border:1px solid var(--line);background:#0e1328;border-radius:14px;transition:border-color .15s}
+.list-row:hover{border-color:#44327a}
+.list-row .grow{flex:1;min-width:0}
+.list-row strong{display:block;overflow-wrap:anywhere;font-size:14px}
+.list-row small{color:var(--muted);font-size:12px}
+.list-row.done strong{text-decoration:line-through;opacity:.6}
+.list-row input[type=checkbox]{accent-color:var(--purple);width:18px;height:18px;cursor:pointer}
 .empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:14px}
-.form-panel{display:grid;gap:9px;align-content:start}.form-panel input,.form-panel select,.form-panel textarea{width:100%;background:#0b0f22;border:1px solid var(--line);color:white;border-radius:10px;padding:10px 11px}.form-panel label{font-size:11px;color:var(--muted);font-weight:600}.form-panel .btn{margin-top:4px}
-.progress{height:7px;background:#272d49;border-radius:20px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,#7c36ed,#bd7aff);border-radius:20px;transition:width .3s}
-.profile-layout{display:grid;grid-template-columns:1fr 1fr;gap:15px}.profile-hero{display:flex;align-items:center;gap:15px}.profile-hero img{width:76px;height:76px;border-radius:50%;object-fit:cover;border:3px solid #7441bf}
+.form-panel{display:grid;gap:9px;align-content:start}
+.form-panel input,.form-panel select,.form-panel textarea{width:100%;background:#0b0f22;border:1px solid var(--line);color:white;border-radius:10px;padding:10px 11px}
+.form-panel label{font-size:11px;color:var(--muted);font-weight:600}
+.form-panel .btn{margin-top:4px}
+.progress{height:7px;background:#272d49;border-radius:20px;overflow:hidden}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,#7c36ed,#bd7aff);border-radius:20px;transition:width .3s}
+.profile-layout{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.profile-hero{display:flex;align-items:center;gap:15px}
+.profile-hero img{width:76px;height:76px;border-radius:50%;object-fit:cover;border:3px solid #7441bf}
 .toast{position:fixed;right:20px;bottom:20px;padding:12px 16px;border:1px solid #5c3a8b;background:#21163b;color:#fff;border-radius:12px;box-shadow:var(--shadow);z-index:50}
 
-/* Habits, Routines, Categories & Statistics (Inspired by My Habits UI in ORBIT Theme) */
+/* Habits, Routines, Categories & Statistics */
 .date-strip{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:16px}
 .day-card{border:1px solid var(--line);background:#0e1328;border-radius:14px;padding:10px 6px;text-align:center;color:var(--muted);transition:all .15s;display:flex;flex-direction:column;align-items:center;gap:3px}
 .day-card:hover{border-color:#5b3896;color:var(--text)}
 .day-card.active{background:linear-gradient(145deg,#7129e9,#4b1b9e);border-color:#b36cff;color:#fff;box-shadow:0 8px 20px #702de944}
-.day-card .m{font-size:10px;text-transform:uppercase;opacity:.85}.day-card .d{font-size:17px;font-weight:800}.day-card .w{font-size:11px}
-.day-dot{width:18px;height:3px;border-radius:3px;background:var(--amber);margin-top:3px;opacity:.4}.day-card.has-done .day-dot{background:var(--green);opacity:1}.day-card.active .day-dot{background:#fff;opacity:1}
+.day-card .m{font-size:10px;text-transform:uppercase;opacity:.85}
+.day-card .d{font-size:17px;font-weight:800}
+.day-card .w{font-size:11px}
+.day-dot{width:18px;height:3px;border-radius:3px;background:var(--amber);margin-top:3px;opacity:.4}
+.day-card.has-done .day-dot{background:var(--green);opacity:1}
+.day-card.active .day-dot{background:#fff;opacity:1}
 
 .filter-pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
 .fpill{border:1px solid var(--line);background:#0e1328;color:var(--muted);padding:8px 16px;border-radius:12px;font-weight:700;font-size:12px;display:inline-flex;align-items:center;gap:6px}
@@ -63,14 +145,15 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:
 .habit-check{width:38px;height:38px;border-radius:12px;border:1px solid #483278;background:#1a1538;color:#caa7ff;display:grid;place-items:center;font-size:16px;font-weight:800;flex-shrink:0;transition:all .15s}
 .habit-check.checked{background:linear-gradient(135deg,#7c36ed,#b36cff);border-color:#d4a8ff;color:#fff;box-shadow:0 4px 14px #873cff55}
 .cat-badge{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:18px;flex-shrink:0;color:#fff;font-weight:700}
-.streak-pill{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:20px;border:1px solid #59388c;background:#1b1438;color:#ffb547;font-weight:800;font-size:12px}
-.step-btn{padding:5px 10px;border-radius:9px;border:1px solid #56358a;background:#1c163b;color:#d6b8ff;font-size:11px;font-weight:700}
+.streak-pill{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:20px;border:1px solid #59388c;background:#1b1438;color:#ffb547;font-weight:800;font-size:12px;flex-shrink:0}
+.step-controls{display:flex;align-items:center;gap:4px;flex-shrink:0}
+.step-btn{padding:5px 9px;border-radius:9px;border:1px solid #56358a;background:#1c163b;color:#d6b8ff;font-size:11px;font-weight:700}
 .step-btn:hover{background:#7129e9;color:#fff}
 
 .routine-card{border:1px solid var(--line);background:#0e1328;border-radius:16px;padding:15px;display:grid;gap:10px}
-.routine-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.routine-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .routine-steps{display:flex;flex-wrap:wrap;gap:6px}
-.routine-step-tag{background:#181e3d;border:1px solid var(--line);padding:5px 10px;border-radius:9px;font-size:12px;display:inline-flex;align-items:center;gap:6px}
+.routine-step-tag{background:#181e3d;border:1px solid var(--line);color:var(--text);padding:6px 10px;border-radius:9px;font-size:12px;display:inline-flex;align-items:center;gap:6px}
 
 .idea-card{border:1px solid #3c2b6b;background:linear-gradient(145deg,#171636,#101328);border-radius:15px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;gap:10px}
 .cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
@@ -79,20 +162,23 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:
 .stat-bar-row{padding:14px;border:1px solid var(--line);background:#0e1328;border-radius:15px;display:grid;gap:10px}
 .mini-bars{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;align-items:end;height:44px;padding-top:6px}
 .mini-bar-col{display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:end}
-.mini-bar-fill{width:100%;max-width:22px;border-radius:5px;background:#262c4d;min-height:5px}.mini-bar-fill.hit{background:linear-gradient(180deg,#b36cff,#7129e9)}
+.mini-bar-fill{width:100%;max-width:22px;border-radius:5px;background:#262c4d;min-height:5px}
+.mini-bar-fill.hit{background:linear-gradient(180deg,#b36cff,#7129e9)}
 
-/* Modal & PIN Overlay */
 .modal-backdrop{position:fixed;inset:0;background:#050712cc;backdrop-filter:blur(6px);display:grid;place-items:center;padding:18px;z-index:40}
 .modal-card{width:min(100%,520px);background:linear-gradient(145deg,#161b38,#0f1328);border:1px solid #443575;border-radius:22px;padding:22px;box-shadow:var(--shadow);max-height:90vh;overflow-y:auto}
-.pin-dots{display:flex;justify-content:center;gap:14px;margin:20px 0}.pin-dot{width:15px;height:15px;border-radius:50%;border:2px solid var(--purple2)}.pin-dot.filled{background:var(--purple2)}
-.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:260px;margin:0 auto}.pin-key{padding:14px;border-radius:14px;border:1px solid var(--line);background:#121730;color:var(--text);font-size:18px;font-weight:750}.pin-key:hover{border-color:var(--purple2)}
+.pin-dots{display:flex;justify-content:center;gap:14px;margin:20px 0}
+.pin-dot{width:15px;height:15px;border-radius:50%;border:2px solid var(--purple2)}
+.pin-dot.filled{background:var(--purple2)}
+.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:260px;margin:0 auto}
+.pin-key{padding:14px;border-radius:14px;border:1px solid var(--line);background:#121730;color:var(--text);font-size:18px;font-weight:750}
+.pin-key:hover{border-color:var(--purple2)}
 
 .mobile-logout{display:none}
 .footer-brand{color:var(--muted);text-align:center;font-size:11px;padding:30px 0 5px;letter-spacing:.02em}
 .import-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 #backupImport{display:none}
 
-/* Light Theme */
 body.light{--bg:#eef4fb;--panel:#ffffff;--panel2:#f6f5ff;--card:#ffffff;--line:#d9e0f0;--text:#1c223b;--muted:#646e8a;--shadow:0 14px 38px #25305a16;background:radial-gradient(ellipse at 80% 0%,#e5dcff 0,transparent 38%),var(--bg);color:var(--text)}
 body.light .sidebar{background:#ffffffed}
 body.light .auth-card,body.light .kpi,body.light .panel,body.light .modal-card{background:linear-gradient(145deg,#fff,#f8f9ff)}
@@ -112,12 +198,11 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
 
 @media(max-width:1100px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:1000px){.app{grid-template-columns:76px minmax(0,1fr)}.sidebar{padding:18px 9px}.side-brand{padding:0 8px}.brand-text,.nav-text,.user-mini .user-info,.side-group-label{display:none}.nav-btn{justify-content:center;padding:11px}.user-mini{justify-content:center;padding:8px}.user-mini img{width:34px;height:34px}.section-grid{grid-template-columns:1fr}}
-@media(max-width:720px){.app{display:block}.sidebar{position:fixed;z-index:20;left:0;right:0;bottom:0;top:auto;height:auto;padding:6px 6px;border-right:0;border-top:1px solid var(--line);display:block;background:#0c1022f8;overflow-x:auto}.side-brand,.side-bottom,.side-group-label{display:none}.mobile-logout{display:inline-grid}.side-nav{display:flex;justify-content:space-between;gap:2px;min-width:max-content}.nav-btn{display:grid;gap:1px;padding:6px 8px;font-size:9px;justify-items:center;min-width:56px}.nav-btn .ico{font-size:16px}.nav-text{display:block}.main{padding:0 13px 95px}.topbar{height:62px;margin-bottom:16px}.topbar h2{font-size:15px}.kpis{gap:8px}.kpi{padding:12px}.kpi strong{font-size:21px}.layout,.section-grid,.profile-layout{grid-template-columns:1fr}.welcome h1{font-size:20px}.panel{padding:14px}.date-strip{gap:4px}.day-card{padding:7px 2px}.day-card .d{font-size:14px}}
-@media(max-width:420px){.kpis{grid-template-columns:1fr}.grid2,.grid3{grid-template-columns:1fr}}
+@media(max-width:720px){.app{display:block}.sidebar{position:fixed;z-index:20;left:0;right:0;bottom:0;top:auto;height:auto;padding:6px 6px;border-right:0;border-top:1px solid var(--line);display:block;background:#0c1022f8;overflow-x:auto}.side-brand,.side-bottom,.side-group-label{display:none}.mobile-logout{display:inline-grid}.side-nav{display:flex;justify-content:flex-start;gap:4px;min-width:max-content}.nav-btn{display:grid;gap:1px;padding:6px 10px;font-size:9px;justify-items:center;min-width:60px}.nav-btn .ico{font-size:16px}.nav-text{display:block}.main{padding:0 13px 95px}.topbar{height:62px;margin-bottom:16px}.topbar h2{font-size:15px}.kpis{gap:8px}.kpi{padding:12px}.kpi strong{font-size:21px}.layout,.section-grid,.profile-layout{grid-template-columns:1fr}.welcome h1{font-size:20px}.panel{padding:14px}.date-strip{gap:4px}.day-card{padding:7px 2px}.day-card .d{font-size:14px}.grid3{grid-template-columns:1fr}}
+@media(max-width:420px){.kpis{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<!-- AUTH VIEW -->
 <div id="authView" class="auth-wrap">
   <div class="auth-card">
     <div class="brand"><div class="brand-mark">O</div><span>ORBIT <span style="color:#a77aff">WORKSPACE</span></span></div>
@@ -148,27 +233,27 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
   </div>
 </div>
 
-<!-- MAIN APP VIEW -->
 <div id="appView" class="app hidden">
  <aside class="sidebar">
   <div class="side-brand"><div class="brand"><div class="brand-mark">O</div><span class="brand-text">ORBIT</span></div></div>
-  <nav class="side-nav">
+  <nav class="side-nav" aria-label="Primary navigation">
    <div class="side-group-label">Daily Flow</div>
-   <button class="nav-btn active" data-section="overview"><span class="ico">▦</span><span class="nav-text">Overview</span></button>
-   <button class="nav-btn" data-section="habits"><span class="ico">★</span><span class="nav-text">My Habits</span></button>
-   <button class="nav-btn" data-section="routines"><span class="ico">⟳</span><span class="nav-text">Routines</span></button>
-   <button class="nav-btn" data-section="tasks"><span class="ico">☑</span><span class="nav-text">My Tasks</span></button>
-   <div class="side-group-label">Planner & Growth</div>
-   <button class="nav-btn" data-section="budget"><span class="ico">◈</span><span class="nav-text">Budget</span></button>
-   <button class="nav-btn" data-section="academics"><span class="ico">▤</span><span class="nav-text">Academics</span></button>
-   <button class="nav-btn" data-section="goals"><span class="ico">◎</span><span class="nav-text">Goals</span></button>
-   <button class="nav-btn" data-section="categories"><span class="ico">❖</span><span class="nav-text">Categories</span></button>
-   <button class="nav-btn" data-section="statistics"><span class="ico">⚡</span><span class="nav-text">Statistics</span></button>
-   <button class="nav-btn" data-section="profile"><span class="ico">◉</span><span class="nav-text">Settings & PIN</span></button>
+   <button class="nav-btn active" data-section="overview" type="button"><span class="ico">▦</span><span class="nav-text">Overview</span></button>
+   <button class="nav-btn" data-section="habits" type="button"><span class="ico">★</span><span class="nav-text">My Habits</span></button>
+   <button class="nav-btn" data-section="routines" type="button"><span class="ico">⟳</span><span class="nav-text">Routines</span></button>
+   <button class="nav-btn" data-section="tasks" type="button"><span class="ico">☑</span><span class="nav-text">My Tasks</span></button>
+   <div class="side-group-label">Workspace</div>
+   <button class="nav-btn" data-section="budget" type="button"><span class="ico">◈</span><span class="nav-text">Budget</span></button>
+   <button class="nav-btn" data-section="academics" type="button"><span class="ico">▤</span><span class="nav-text">Academics</span></button>
+   <button class="nav-btn" data-section="goals" type="button"><span class="ico">◎</span><span class="nav-text">Goals</span></button>
+   <button class="nav-btn" data-section="categories" type="button"><span class="ico">❖</span><span class="nav-text">Categories</span></button>
+   <div class="side-group-label">Insights & Security</div>
+   <button class="nav-btn" data-section="statistics" type="button"><span class="ico">⚡</span><span class="nav-text">Statistics</span></button>
+   <button class="nav-btn" data-section="profile" type="button"><span class="ico">◉</span><span class="nav-text">Settings & PIN</span></button>
   </nav>
   <div class="side-bottom">
    <div class="user-mini"><img id="sideAvatar" alt="Profile"><div class="user-info"><strong id="sideName">User</strong><small id="sideEmail">email</small></div></div>
-   <button id="logoutBtn" class="nav-btn" style="width:100%;margin-top:8px"><span class="ico">↪</span><span class="nav-text">Sign out</span></button>
+   <button id="logoutBtn" class="nav-btn" style="width:100%;margin-top:8px" type="button"><span class="ico">↪</span><span class="nav-text">Sign out</span></button>
   </div>
  </aside>
 
@@ -180,17 +265,16 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
     <button class="icon-btn" id="guideBtn" title="How ORBIT Habits works" aria-label="How ORBIT works">?</button>
     <button class="icon-btn" id="exportBtn" title="Export backup" aria-label="Export backup">⇩</button>
     <button class="icon-btn" id="importBtn" title="Import backup" aria-label="Import backup">⇧</button>
-    <button class="icon-btn" id="legacyImportBtn" title="Import legacy data" aria-label="Import legacy HTML/JSON">HTML</button>
+    <button class="icon-btn" id="legacyImportBtn" title="Import legacy JSON/HTML" aria-label="Import legacy JSON or HTML">JSON</button>
     <input id="backupImport" type="file" accept="application/json,.json">
     <input id="legacyImportFile" type="file" accept=".html,.htm,.json,application/json,text/html" hidden>
     <button class="icon-btn" id="themeBtn" title="Switch theme" aria-label="Switch theme">☼</button>
     <button class="icon-btn mobile-logout" id="mobileLogout" type="button" title="Sign out" aria-label="Sign out">↪</button>
-    <img id="topAvatar" class="top-avatar" alt="Your profile" data-go="profile">
+    <button class="avatar-btn" type="button" data-go="profile" title="Open profile & settings" aria-label="Open profile and settings"><img id="topAvatar" alt="Your profile"></button>
    </div>
   </header>
 
   <div class="content">
-   <!-- OVERVIEW SECTION -->
    <section id="section-overview" class="section active">
     <div class="welcome"><div><h1 id="greeting">Good day 👋</h1><p>Here’s your personal habits, tasks, and progress at a glance.</p></div><span class="pill" id="todayLabel"></span></div>
     <div class="kpis">
@@ -202,20 +286,19 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
     <div class="layout">
      <div class="stack">
       <div class="panel">
-       <div class="panel-head"><div><h3>Today's Habits</h3><div class="panel-sub">Tap to check off or log progress</div></div><button class="btn sm secondary" data-go="habits">Open Habits →</button></div>
+       <div class="panel-head"><div><h3>Today's Habits</h3><div class="panel-sub">Tap to check off or log progress</div></div><button class="btn sm secondary" data-go="habits" type="button">Open Habits →</button></div>
        <div id="overviewHabitsList" class="list"></div>
       </div>
       <div class="panel"><div class="panel-head"><div><h3>Weekly activity</h3><div class="panel-sub">Tasks & habits completed this week</div></div><span class="pill">THIS WEEK</span></div><div class="chart" id="activityChart"></div><div class="chart-legend"><span>Daily completions</span><strong id="chartTotal">0 completed</strong></div></div>
-      <div class="panel"><div class="panel-head"><h3>Manage your workspace</h3><span class="panel-sub">Quick actions</span></div><div class="quick-grid"><button class="quick" data-go="habits"><span>★</span><strong>Track a habit</strong></button><button class="quick" data-go="routines"><span>⟳</span><strong>Start a routine</strong></button><button class="quick" data-go="tasks"><span>＋</span><strong>Add a task</strong></button><button class="quick" data-go="budget"><span>◈</span><strong>Record expense</strong></button></div></div>
+      <div class="panel"><div class="panel-head"><h3>Manage your workspace</h3><span class="panel-sub">Quick actions</span></div><div class="quick-grid"><button class="quick" data-go="habits" type="button"><span>★</span><strong>Track a habit</strong></button><button class="quick" data-go="routines" type="button"><span>⟳</span><strong>Start a routine</strong></button><button class="quick" data-go="tasks" type="button"><span>＋</span><strong>Add a task</strong></button><button class="quick" data-go="budget" type="button"><span>◈</span><strong>Record expense</strong></button></div></div>
      </div>
      <div class="stack">
-      <div class="panel"><div class="panel-head"><h3>Priority tasks</h3><button class="btn secondary sm" data-go="tasks">See all</button></div><div id="priorityList" class="priority"></div></div>
+      <div class="panel"><div class="panel-head"><h3>Priority tasks</h3><button class="btn secondary sm" data-go="tasks" type="button">See all</button></div><div id="priorityList" class="priority"></div></div>
       <div class="panel"><div class="panel-head"><h3>Focus for today</h3><span>✦</span></div><p class="muted" style="font-size:13px">Small consistent steps create meaningful progress. Keep your daily streaks alive.</p><div class="progress"><i id="todayProgress" style="width:0%"></i></div><div class="panel-sub" id="todayProgressText" style="margin-top:8px">0% of today's items completed</div></div>
      </div>
     </div>
    </section>
 
-   <!-- HABITS TODAY & MANAGE HABITS SECTION -->
    <section id="section-habits" class="section">
     <div class="welcome">
      <div><h1>Habits Today</h1><p>Build unstoppable daily streaks with single-tap or multi-step habits.</p></div>
@@ -230,9 +313,7 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
        <h3 id="habitSelectedDateTitle">Today</h3>
        <span class="pill" id="habitSummaryPill">0 / 0 DONE</span>
       </div>
-      <!-- 7-Day Date Strip (Inspired by Screenshot 2) -->
       <div id="habitDateStrip" class="date-strip"></div>
-      <!-- Filter Pills (all / open / finished) -->
       <div class="filter-pills">
        <button class="fpill active" data-hfilter="all" type="button">☰ All</button>
        <button class="fpill" data-hfilter="open" type="button">○ Open</button>
@@ -241,24 +322,23 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
       <div id="habitList" class="list"></div>
      </div>
 
-     <!-- Add / Create Habit Form -->
      <form id="habitForm" class="panel form-panel">
       <h3>Create a Habit</h3>
-      <label>Habit name</label>
+      <label for="habitName">Habit name</label>
       <input id="habitName" required maxlength="90" placeholder="e.g. Drink a glass of water">
-      <label>Category</label>
+      <label for="habitCategory">Category</label>
       <select id="habitCategory"></select>
       <div class="grid2">
        <div>
-        <label>Daily target count</label>
+        <label for="habitTarget">Daily target count</label>
         <input id="habitTarget" type="number" min="1" max="50" value="1" required>
        </div>
        <div>
-        <label>Reminder time</label>
+        <label for="habitTime">Reminder time</label>
         <input id="habitTime" type="time" value="08:00">
        </div>
       </div>
-      <label>Schedule</label>
+      <label for="habitFreq">Schedule</label>
       <select id="habitFreq">
        <option value="daily">Once a day (Every day)</option>
        <option value="weekdays">Weekdays (Mon – Fri)</option>
@@ -266,16 +346,15 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
       </select>
       <button class="btn" type="submit">+ Add Habit</button>
       <hr style="border:0;border-top:1px solid var(--line);margin:8px 0">
-      <div class="panel-sub">Tip: Set target count to <strong>4</strong> for habits like <em>"Drink 4 glasses of water"</em> to track incremental steps (0 of 4).</div>
+      <div class="panel-sub">Tip: Set target count to <strong>4</strong> for habits like <em>"Drink a glass of water"</em> to track incremental steps (0 of 4).</div>
      </form>
     </div>
    </section>
 
-   <!-- ROUTINES SECTION (Inspired by Screenshot 3) -->
    <section id="section-routines" class="section">
     <div class="welcome">
      <div><h1>Active Routines</h1><p>Chain habits together into morning, study, or evening flows.</p></div>
-     <button class="btn secondary sm" data-go="categories">Manage Categories</button>
+     <button class="btn secondary sm" data-go="categories" type="button">Manage Categories</button>
     </div>
     <div class="section-grid">
      <div class="stack">
@@ -291,18 +370,17 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
 
      <form id="routineForm" class="panel form-panel">
       <h3>Create My Own Routine</h3>
-      <label>Routine title</label>
+      <label for="routineTitle">Routine title</label>
       <input id="routineTitle" required maxlength="80" placeholder="e.g. Morning Focus Ritual">
-      <label>Time of day / schedule</label>
+      <label for="routineTime">Time of day / schedule</label>
       <input id="routineTime" maxlength="50" placeholder="e.g. Every morning at 06:30">
-      <label>Steps (one per line)</label>
+      <label for="routineSteps">Steps (one per line)</label>
       <textarea id="routineSteps" rows="5" required placeholder="Get up at 6:30 AM&#10;Drink a glass of water&#10;Meditate for 5 minutes&#10;Review top 3 priorities"></textarea>
       <button class="btn" type="submit">+ Create Routine</button>
      </form>
     </div>
    </section>
 
-   <!-- CATEGORIES SECTION (Inspired by Screenshot 4) -->
    <section id="section-categories" class="section">
     <div class="welcome"><div><h1>Categories</h1><p>Organize your habits, routines, and tasks with custom color badges.</p></div></div>
     <div class="section-grid">
@@ -312,15 +390,15 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
      </div>
      <form id="categoryForm" class="panel form-panel">
       <h3>New Category</h3>
-      <label>Category name</label>
+      <label for="catName">Category name</label>
       <input id="catName" required maxlength="50" placeholder="e.g. Deep Work">
       <div class="grid2">
        <div>
-        <label>Icon / Emoji</label>
+        <label for="catIcon">Icon / Emoji</label>
         <input id="catIcon" maxlength="4" value="✦" placeholder="✦">
        </div>
        <div>
-        <label>Badge Color</label>
+        <label for="catColor">Badge Color</label>
         <input id="catColor" type="color" value="#873cff" style="height:42px;padding:4px">
        </div>
       </div>
@@ -329,7 +407,6 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
     </div>
    </section>
 
-   <!-- STATISTICS SECTION (Inspired by Screenshot 6) -->
    <section id="section-statistics" class="section">
     <div class="welcome">
      <div><h1>Habit & Routine Statistics</h1><p>Measure consistency, longest streaks, and perfect days.</p></div>
@@ -351,41 +428,36 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
     </div>
    </section>
 
-   <!-- TASKS SECTION -->
    <section id="section-tasks" class="section">
     <div class="welcome"><div><h1>My tasks</h1><p>Plan your day and keep moving forward.</p></div></div>
     <div class="section-grid"><div class="panel"><div class="panel-head"><h3>Task list</h3><span class="pill" id="taskCount">0 TASKS</span></div><div class="toolbar"><input id="taskSearch" placeholder="Search tasks…"><select id="taskFilter" style="max-width:150px"><option value="all">All tasks</option><option value="open">Pending</option><option value="done">Completed</option></select></div><div id="taskList" class="list"></div></div>
-    <form id="taskForm" class="panel form-panel"><h3>Add a task</h3><label>Task title</label><input id="taskText" required maxlength="120" placeholder="e.g. Finish assignment"><label>Category</label><select id="taskCategory"><option>School</option><option>Personal</option><option>Finance</option><option>Work</option></select><label>Due date</label><input id="taskDue" type="date"><button class="btn">Add task</button></form></div>
+    <form id="taskForm" class="panel form-panel"><h3>Add a task</h3><label for="taskText">Task title</label><input id="taskText" required maxlength="120" placeholder="e.g. Finish assignment"><label for="taskCategory">Category</label><select id="taskCategory"><option>School</option><option>Personal</option><option>Finance</option><option>Work</option></select><label for="taskDue">Due date</label><input id="taskDue" type="date"><button class="btn" type="submit">Add task</button></form></div>
    </section>
 
-   <!-- BUDGET SECTION -->
    <section id="section-budget" class="section">
     <div class="welcome"><div><h1>Budget planner</h1><p>Keep track of planned and paid expenses in RWF.</p></div></div>
     <div class="section-grid"><div class="panel"><div class="panel-head"><h3>Expenses</h3><span class="pill">RWF</span></div><div class="import-controls" style="margin:0 0 12px"><button class="btn secondary" id="exportBudgetExcel" type="button">Export budget to Excel</button><button class="btn secondary" id="importBudgetFileBtn" type="button">Import budget file</button><input id="budgetImportFile" type="file" accept=".csv,.xlsx,.xls,.json" hidden></div><div id="budgetList" class="list"></div><div style="display:flex;justify-content:space-between;margin-top:15px"><span class="muted">Total recorded</span><strong id="budgetTotal">0 RWF</strong></div></div>
-    <form id="budgetForm" class="panel form-panel"><h3>New expense</h3><label>Description</label><input id="budgetName" required maxlength="80" placeholder="e.g. Transport"><label>Amount (RWF)</label><input id="budgetAmount" type="number" min="1" step="1" required placeholder="5000"><label>Date</label><input id="budgetDate" type="date"><label>Payment status</label><select id="budgetPaid"><option value="unpaid">Unpaid / planned</option><option value="paid">Paid</option></select><label>Category</label><select id="budgetCategory"><option>Food</option><option>Rent</option><option>School</option><option>Transport</option><option>Other</option></select><button class="btn">Add expense</button></form></div>
+    <form id="budgetForm" class="panel form-panel"><h3>New expense</h3><label for="budgetName">Description</label><input id="budgetName" required maxlength="80" placeholder="e.g. Transport"><label for="budgetAmount">Amount (RWF)</label><input id="budgetAmount" type="number" min="1" step="1" required placeholder="5000"><label for="budgetDate">Date</label><input id="budgetDate" type="date"><label for="budgetPaid">Payment status</label><select id="budgetPaid"><option value="unpaid">Unpaid / planned</option><option value="paid">Paid</option></select><label for="budgetCategory">Category</label><select id="budgetCategory"><option>Food</option><option>Rent</option><option>School</option><option>Transport</option><option>Other</option></select><button class="btn" type="submit">Add expense</button></form></div>
    </section>
 
-   <!-- ACADEMICS SECTION -->
    <section id="section-academics" class="section">
     <div class="welcome"><div><h1>Academics</h1><p>Record CATs, assignments and examination results.</p></div></div>
     <div class="section-grid"><div class="panel"><div class="panel-head"><h3>Academic records</h3><span class="pill" id="academicAverage">AVERAGE: —</span></div><div class="toolbar"><button id="transcriptExport" class="btn secondary" type="button">Export transcript CSV</button></div><div id="semesterSummary" class="panel-sub"></div><div id="academicList" class="list"></div></div>
-    <form id="academicForm" class="panel form-panel"><h3>Add a result</h3><label>Course code</label><input id="academicCode" maxlength="30" placeholder="e.g. MAT101"><label>Course / assessment</label><input id="academicName" required maxlength="100" placeholder="e.g. Mathematics CAT 1"><label>Mark (0–100)</label><input id="academicGrade" type="number" min="0" max="100" required placeholder="85"><label>Weight (optional)</label><input id="academicWeight" type="number" min="0.1" max="100" step="0.1" value="1" required><label>Semester / term</label><input id="academicTerm" maxlength="40" placeholder="e.g. Semester 1"><label>Date</label><input id="academicDate" type="date"><button class="btn">Save result</button></form></div>
+    <form id="academicForm" class="panel form-panel"><h3>Add a result</h3><label for="academicCode">Course code</label><input id="academicCode" maxlength="30" placeholder="e.g. MAT101"><label for="academicName">Course / assessment</label><input id="academicName" required maxlength="100" placeholder="e.g. Mathematics CAT 1"><label for="academicGrade">Mark (0–100)</label><input id="academicGrade" type="number" min="0" max="100" required placeholder="85"><label for="academicWeight">Weight (optional)</label><input id="academicWeight" type="number" min="0.1" max="100" step="0.1" value="1" required><label for="academicTerm">Semester / term</label><input id="academicTerm" maxlength="40" placeholder="e.g. Semester 1"><label for="academicDate">Date</label><input id="academicDate" type="date"><button class="btn" type="submit">Save result</button></form></div>
    </section>
 
-   <!-- GOALS SECTION -->
    <section id="section-goals" class="section">
     <div class="welcome"><div><h1>Goals</h1><p>Define what matters and track your progress.</p></div></div>
     <div class="section-grid"><div class="panel"><div class="panel-head"><h3>Your goals</h3><span class="pill" id="goalCount">0 GOALS</span></div><div id="goalList" class="list"></div></div>
-    <form id="goalForm" class="panel form-panel"><h3>Create a SMART goal</h3><label>Specific goal</label><input id="goalText" required maxlength="120" placeholder="e.g. Improve my programming skills"><label>How will you measure success?</label><input id="goalMeasure" maxlength="120" placeholder="e.g. Build 3 Java projects"><div class="grid2"><div><label>Current progress</label><input id="goalCurrent" type="number" min="0" step="any" value="0"></div><div><label>Target value</label><input id="goalTarget" type="number" min="0.01" step="any" value="3"></div></div><label>Why is this relevant?</label><input id="goalWhy" maxlength="180" placeholder="e.g. Prepare for internship"><label>Action plan / next step</label><textarea id="goalPlan" rows="2" maxlength="300" placeholder="List the actions you will take"></textarea><label>Target date</label><input id="goalDue" type="date" required><button class="btn">Create SMART goal</button></form></div>
+    <form id="goalForm" class="panel form-panel"><h3>Create a SMART goal</h3><label for="goalText">Specific goal</label><input id="goalText" required maxlength="120" placeholder="e.g. Improve my programming skills"><label for="goalMeasure">How will you measure success?</label><input id="goalMeasure" maxlength="120" placeholder="e.g. Build 3 Java projects"><div class="grid2"><div><label for="goalCurrent">Current progress</label><input id="goalCurrent" type="number" min="0" step="any" value="0"></div><div><label for="goalTarget">Target value</label><input id="goalTarget" type="number" min="0.01" step="any" value="3"></div></div><label for="goalWhy">Why is this relevant?</label><input id="goalWhy" maxlength="180" placeholder="e.g. Prepare for internship"><label for="goalPlan">Action plan / next step</label><textarea id="goalPlan" rows="2" maxlength="300" placeholder="List the actions you will take"></textarea><label for="goalDue">Target date</label><input id="goalDue" type="date" required><button class="btn" type="submit">Create SMART goal</button></form></div>
    </section>
 
-   <!-- PROFILE, PIN SETTINGS & BACKUP SECTION -->
    <section id="section-profile" class="section">
     <div class="welcome"><div><h1>My profile & settings</h1><p>Manage your profile, PIN lock, reminders, and cloud-synced workspace.</p></div></div>
     <div class="profile-layout">
      <div class="stack">
       <div class="panel">
-       <div class="profile-hero"><img id="profileAvatar" alt="Profile picture"><div><h3 id="profileName" style="margin:0">Your name</h3><div class="muted" id="profileEmail"></div><span class="pill" style="margin-top:6px">CLOUD SYNCED · V 2.0</span></div></div>
+       <div class="profile-hero"><img id="profileAvatar" alt="Profile picture"><div><h3 id="profileName" style="margin:0">Your name</h3><div class="muted" id="profileEmail"></div><span class="pill" style="margin-top:6px">CLOUD SYNCED · V 2.1</span></div></div>
        <hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
        <div class="import-controls">
         <button id="backupBtn" class="btn secondary" type="button">⇩ Export JSON backup</button>
@@ -394,9 +466,8 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
        <p class="panel-sub" style="margin-top:10px">Reminders notify you about due tasks and daily habits while ORBIT is open.</p>
       </div>
 
-      <!-- PIN Settings Panel (Inspired by Screenshot 1) -->
       <div class="panel">
-       <div class="panel-head"><div><h3>🔢 App PIN Settings</h3><div class="panel-sub">Protect your personal habits, budget, and grades with a 4-digit PIN</div></div><span class="pill" id="pinStatusPill">PIN OFF</span></div>
+       <div class="panel-head"><div><h3>🔢 App PIN Settings</h3><div class="panel-sub">Lock your workspace with a 4-digit PIN (hashed securely)</div></div><span class="pill" id="pinStatusPill">PIN OFF</span></div>
        <div class="grid2" style="margin-top:10px">
         <input id="newPinInput" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="Enter 4-digit PIN" style="background:#0b0f22;border:1px solid var(--line);color:var(--text);padding:11px;border-radius:11px">
         <button id="savePinBtn" class="btn" type="button">Set / Update PIN</button>
@@ -405,7 +476,7 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
       </div>
      </div>
 
-     <form id="profileForm" class="panel form-panel"><h3>Edit profile</h3><label>Full name</label><input id="profileEditName" required maxlength="60"><label>Course / role</label><input id="profileCourse" maxlength="70"><label>Year / level</label><input id="profileYear" maxlength="30"><label>About me</label><textarea id="profileBio" rows="3" maxlength="500" placeholder="A short introduction"></textarea><label>Change profile picture</label><input id="profilePhoto" type="file" accept="image/*"><button class="btn">Save profile</button></form>
+     <form id="profileForm" class="panel form-panel"><h3>Edit profile</h3><label for="profileEditName">Full name</label><input id="profileEditName" required maxlength="60"><label for="profileCourse">Course / role</label><input id="profileCourse" maxlength="70"><label for="profileYear">Year / level</label><input id="profileYear" maxlength="30"><label for="profileBio">About me</label><textarea id="profileBio" rows="3" maxlength="500" placeholder="A short introduction"></textarea><label for="profilePhoto">Change profile picture</label><input id="profilePhoto" type="file" accept="image/*"><button class="btn" type="submit">Save profile</button></form>
     </div>
    </section>
 
@@ -414,22 +485,20 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
  </main>
 </div>
 
-<!-- HOW IT WORKS MODAL -->
-<div id="guideModal" class="modal-backdrop hidden">
+<div id="guideModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="guideTitle">
  <div class="modal-card">
-  <div class="panel-head"><h3>✦ How ORBIT Habits & Workspace Works</h3><button class="icon-btn" id="closeGuideBtn" type="button">×</button></div>
+  <div class="panel-head"><h3 id="guideTitle">✦ How ORBIT Habits & Workspace Works</h3><button class="icon-btn" id="closeGuideBtn" type="button" aria-label="Close guide">×</button></div>
   <div class="list" style="margin-top:10px">
-   <div class="list-row"><span class="cat-badge" style="background:#7129e9">★</span><div class="grow"><strong>1. Track Daily Habits & Streaks</strong><small>Select any day on the 7-day strip, tap the check button (or +1 step for multi-count habits), and build consecutive flame streaks.</small></div></div>
-   <div class="list-row"><span class="cat-badge" style="background:#0d9488">⟳</span><div class="grow"><strong>2. Run Guided Routines</strong><small>Group morning or evening habits into Routines, check off each step, and complete the full routine in one flow.</small></div></div>
-   <div class="list-row"><span class="cat-badge" style="background:#d97706">⚡</span><div class="grow"><strong>3. Analyze Consistency & Perfect Days</strong><small>Visit Statistics to inspect 7-day, 14-day, and 30-day completion rates, longest streaks, and perfect days.</small></div></div>
-   <div class="list-row"><span class="cat-badge" style="background:#2563eb">☁</span><div class="grow"><strong>4. Automatic Supabase Cloud Sync</strong><small>Everything—habits, routines, tasks, RWF budget, academics, and goals—syncs automatically to your account.</small></div></div>
+   <div class="list-row"><span class="cat-badge" style="background:#7129e9">★</span><div class="grow"><strong>1. Track Daily Habits & Streaks</strong><small>Select any day on the 7-day strip, check off habits or step multi-count targets (like 0 of 4), and keep your flame streak growing.</small></div></div>
+   <div class="list-row"><span class="cat-badge" style="background:#0d9488">⟳</span><div class="grow"><strong>2. Run Guided Routines</strong><small>Group steps into morning, study, or evening routines, check off each step with a live progress bar, and finish the flow.</small></div></div>
+   <div class="list-row"><span class="cat-badge" style="background:#d97706">⚡</span><div class="grow"><strong>3. Analyze Consistency & Perfect Days</strong><small>Inspect 7-day, 14-day, and 30-day completion rates, longest streaks, and perfect days in Statistics.</small></div></div>
+   <div class="list-row"><span class="cat-badge" style="background:#2563eb">☁</span><div class="grow"><strong>4. Supabase Cloud Sync & Backups</strong><small>Your workspace syncs automatically to Supabase and supports JSON backups and Excel/CSV budget exports.</small></div></div>
   </div>
   <button class="btn full" id="gotItGuideBtn" type="button" style="margin-top:16px">Got it, let's go</button>
  </div>
 </div>
 
-<!-- PIN LOCK OVERLAY -->
-<div id="pinLockModal" class="modal-backdrop hidden" style="z-index:60">
+<div id="pinLockModal" class="modal-backdrop hidden" style="z-index:60" role="dialog" aria-modal="true" aria-label="PIN Lock">
  <div class="modal-card" style="text-align:center;max-width:360px">
   <div class="brand" style="justify-content:center;margin-bottom:10px"><div class="brand-mark">O</div><span>ORBIT LOCKED</span></div>
   <p class="muted" style="font-size:12px">Enter your 4-digit security PIN to unlock your workspace.</p>
@@ -455,7 +524,6 @@ const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_h_j6GKM7lbw7uMSt9tG30g_Y8IBU3F3
 const supabaseClient = window.supabase?.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
 let accounts = {}, currentEmail = null, currentUser = null, signupPhotoData = '', profilePhotoData = '', cloudSaveQueue = Promise.resolve();
-let selectedHabitDate = isoDate(new Date());
 let habitFilter = 'all';
 let habitSortAZ = false;
 let statWindowDays = 7;
@@ -492,16 +560,25 @@ const ROUTINE_IDEAS = [
  {title:'Peaceful Evening Wind-Down',time:'09:30 PM · Daily',steps:['Write down 3 things you are grateful for','Prepare clothes & bag for tomorrow','Go to bed by 11 pm']}
 ];
 
-function isoDate(d){
+function localIsoDate(d = new Date()){
  const dt = new Date(d);
- const off = dt.getTimezoneOffset();
- return new Date(dt.getTime() - off * 60000).toISOString().slice(0, 10);
+ const year = dt.getFullYear();
+ const month = String(dt.getMonth() + 1).padStart(2, '0');
+ const day = String(dt.getDate()).padStart(2, '0');
+ return `${year}-${month}-${day}`;
 }
 function addDays(baseIso, delta){
  const [y,m,d] = baseIso.split('-').map(Number);
- const dt = new Date(y, m - 1, d + delta);
- return isoDate(dt);
+ return localIsoDate(new Date(y, m - 1, d + delta));
 }
+let selectedHabitDate = localIsoDate();
+
+async function hashPin(pin){
+ const enc = new TextEncoder().encode(pin + ':orbit_pin_salt_v1');
+ const buf = await crypto.subtle.digest('SHA-256', enc);
+ return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
 function active(){return currentEmail ? accounts[currentEmail] : null}
 function notify(msg){$('toast').textContent=msg;$('toast').classList.remove('hidden');clearTimeout(window._toastT);window._toastT=setTimeout(()=>$('toast').classList.add('hidden'),3200)}
 function showAuth(which){$('loginPane').classList.toggle('hidden',which!=='login');$('signupPane').classList.toggle('hidden',which!=='signup')}
@@ -509,7 +586,7 @@ $('showSignup').onclick=()=>showAuth('signup');$('showLogin').onclick=()=>showAu
 
 function freshUser(name,email,course,year){
  return {
-  profile:{name,email,course,year,bio:'',photo:signupPhotoData||defaultAvatar,pin:''},
+  profile:{name,email,course,year,bio:'',photo:signupPhotoData||defaultAvatar,pinHash:''},
   tasks:[],budgets:[],academics:[],goals:[],
   categories:JSON.parse(JSON.stringify(DEFAULT_CATEGORIES)),
   habits:STARTER_HABITS.slice(0,4).map(h=>({id:crypto.randomUUID(),...h,logs:{},createdAt:new Date().toISOString()})),
@@ -529,7 +606,7 @@ function normalizeWorkspace(data,email){
    year:String(d.profile?.year||''),
    bio:String(d.profile?.bio||''),
    photo:typeof d.profile?.photo==='string'?d.profile.photo:defaultAvatar,
-   pin:typeof d.profile?.pin==='string'?d.profile.pin:''
+   pinHash:typeof d.profile?.pinHash==='string'?d.profile.pinHash:''
   },
   tasks:Array.isArray(d.tasks)?d.tasks:[],
   budgets:Array.isArray(d.budgets)?d.budgets:[],
@@ -575,7 +652,7 @@ function openApp(){
  renderAll();
  showSection('overview');
  checkDueReminders();
- if(active().profile.pin && active().profile.pin.length===4){
+ if(active().profile.pinHash){
   openPinLock();
  }
 }
@@ -587,7 +664,6 @@ async function logout(){
 }
 $('logoutBtn').onclick=logout;$('mobileLogout').onclick=logout;
 
-/* SIGNUP & LOGIN WITH FIXED REDIRECT URL */
 $('signupForm').addEventListener('submit',async e=>{
  e.preventDefault();
  const submit=e.currentTarget.querySelector('button[type="submit"]'),original=submit.textContent;
@@ -636,7 +712,7 @@ $('forgotPassword').onclick=async()=>{
 };
 
 if(supabaseClient){
- supabaseClient.auth.onAuthStateChange((event,session)=>{
+ supabaseClient.auth.onAuthStateChange((event)=>{
   if(event==='PASSWORD_RECOVERY'){
    setTimeout(async()=>{
     const next=prompt('Enter your new password (at least 8 characters):');
@@ -680,12 +756,12 @@ function renderAll(){
  renderOverview();
 }
 
-/* ==================== HABITS ENGINE ==================== */
+/* HABITS */
 function getHabitCount(h, dateStr){return Math.max(0, Number(h.logs?.[dateStr]||0))}
 function isHabitDone(h, dateStr){return getHabitCount(h, dateStr) >= (Number(h.target)||1)}
 function calcHabitStreak(h){
  let streak = 0;
- let cursor = isoDate(new Date());
+ let cursor = localIsoDate();
  if(!isHabitDone(h, cursor)) cursor = addDays(cursor, -1);
  while(isHabitDone(h, cursor)){
   streak++;
@@ -704,17 +780,16 @@ function calcBestStreak(h){
  }
  return best;
 }
-
-function toggleHabitStep(habitId, dateStr, forceToggle=false){
+function stepHabit(habitId, dateStr, delta){
  const h = active().habits.find(x=>x.id===habitId);
  if(!h) return;
  if(!h.logs) h.logs = {};
  const target = Number(h.target)||1;
  const current = getHabitCount(h, dateStr);
- if(forceToggle || target === 1){
+ if(delta === 'toggle'){
   h.logs[dateStr] = current >= target ? 0 : target;
  } else {
-  h.logs[dateStr] = current >= target ? 0 : current + 1;
+  h.logs[dateStr] = Math.max(0, Math.min(target, current + delta));
  }
  saveActive();
  renderAll();
@@ -723,18 +798,17 @@ function toggleHabitStep(habitId, dateStr, forceToggle=false){
 
 function renderHabits(){
  const a = active();
- const today = isoDate(new Date());
+ const today = localIsoDate();
  const [y,m,d] = selectedHabitDate.split('-').map(Number);
  const selObj = new Date(y, m-1, d);
  $('habitSelectedDateTitle').textContent = selectedHabitDate === today
   ? 'Today · ' + selObj.toLocaleDateString(undefined,{month:'short',day:'numeric'})
   : selObj.toLocaleDateString(undefined,{weekday:'long',month:'short',day:'numeric'});
 
- // 7-Day Date Strip centered around today (-2 to +4 days)
  const stripDates = [-2,-1,0,1,2,3,4].map(offset=>addDays(today, offset));
  $('habitDateStrip').innerHTML = stripDates.map(dtStr=>{
-  const [yy,mm,dd] = dtStr.split('-').map(Number);
-  const dtObj = new Date(yy, mm-1, dd);
+  const [yy,,dd] = dtStr.split('-').map(Number);
+  const dtObj = new Date(dtStr + 'T12:00:00');
   const hasDone = a.habits.some(h=>isHabitDone(h, dtStr));
   return `<button type="button" class="day-card ${dtStr===selectedHabitDate?'active':''} ${hasDone?'has-done':''}" data-hdate="${dtStr}">
    <span class="m">${dtObj.toLocaleDateString(undefined,{month:'short'})}</span>
@@ -771,14 +845,15 @@ function renderHabits(){
     <strong style="${done?'text-decoration:line-through;opacity:.75':''}">${esc(h.name)}</strong>
     <small>${esc(cat.name)} · ${target>1?`${count} of ${target}`:'Once a day'}${h.time?' · ⏰ '+esc(h.time):''}</small>
    </div>
-   ${target>1?`<button type="button" class="step-btn" data-hstep="${esc(h.id)}">${count}/${target} +1</button>`:''}
+   ${target>1?`<div class="step-controls"><button type="button" class="step-btn" data-hdec="${esc(h.id)}" title="Decrease step">−</button><button type="button" class="step-btn" data-hinc="${esc(h.id)}" title="Increase step">+1</button></div>`:''}
    ${streak>0?`<span class="streak-pill" title="Current streak">🔥 ${streak}</span>`:''}
-   <button type="button" class="icon-btn" data-hdel="${esc(h.id)}" title="Delete habit">×</button>
+   <button type="button" class="icon-btn" data-hdel="${esc(h.id)}" title="Delete habit" aria-label="Delete habit">×</button>
   </div>`;
  }).join('') : '<div class="empty">No habits in this view. Add one on the right or click <strong>Starter ideas</strong>!</div>';
 
- $('habitList').querySelectorAll('[data-htoggle]').forEach(btn=>btn.onclick=()=>toggleHabitStep(btn.dataset.htoggle, selectedHabitDate, true));
- $('habitList').querySelectorAll('[data-hstep]').forEach(btn=>btn.onclick=()=>toggleHabitStep(btn.dataset.hstep, selectedHabitDate, false));
+ $('habitList').querySelectorAll('[data-htoggle]').forEach(btn=>btn.onclick=()=>stepHabit(btn.dataset.htoggle, selectedHabitDate, 'toggle'));
+ $('habitList').querySelectorAll('[data-hinc]').forEach(btn=>btn.onclick=()=>stepHabit(btn.dataset.hinc, selectedHabitDate, 1));
+ $('habitList').querySelectorAll('[data-hdec]').forEach(btn=>btn.onclick=()=>stepHabit(btn.dataset.hdec, selectedHabitDate, -1));
  $('habitList').querySelectorAll('[data-hdel]').forEach(btn=>btn.onclick=()=>{
   a.habits = a.habits.filter(x=>x.id!==btn.dataset.hdel);
   saveActive();renderAll();notify('Habit deleted.');
@@ -814,21 +889,23 @@ $('habitForm').onsubmit=e=>{
  saveActive();$('habitForm').reset();$('habitTarget').value='1';renderAll();notify('Habit created!');
 };
 
-/* ==================== ROUTINES ENGINE ==================== */
+/* ROUTINES */
 function renderRoutines(){
  const a = active();
  $('routineCount').textContent = `${a.routines.length} ROUTINES`;
  $('routineList').innerHTML = a.routines.length ? a.routines.map(r=>{
   const checkedSet = new Set(r.checkedSteps||[]);
+  const pct = r.steps.length ? Math.round((checkedSet.size / r.steps.length) * 100) : 0;
   const allDone = r.steps.length > 0 && r.steps.every((_,idx)=>checkedSet.has(idx));
   return `<div class="routine-card">
    <div class="routine-head">
-    <div><strong>${esc(r.title)}</strong><small class="muted">${esc(r.time||'Flexible schedule')} · Completed ${r.completedCount||0}× total</small></div>
+    <div><strong>${esc(r.title)}</strong><small class="muted">${esc(r.time||'Flexible schedule')} · ${checkedSet.size}/${r.steps.length} steps (${pct}%) · Completed ${r.completedCount||0}×</small></div>
     <div class="import-controls">
-     <button type="button" class="btn sm ${allDone?'':'secondary'}" data-rcomplete="${esc(r.id)}">${allDone?'✓ Finish & Reset':'Complete All'}</button>
-     <button type="button" class="icon-btn" data-rdel="${esc(r.id)}" title="Delete routine">×</button>
+     <button type="button" class="btn sm ${allDone?'':'secondary'}" data-rcomplete="${esc(r.id)}">${allDone?'✓ Finish & Reset':'Complete Routine'}</button>
+     <button type="button" class="icon-btn" data-rdel="${esc(r.id)}" title="Delete routine" aria-label="Delete routine">×</button>
     </div>
    </div>
+   <div class="progress"><i style="width:${pct}%"></i></div>
    <div class="routine-steps">
     ${r.steps.map((st,idx)=>`<button type="button" class="routine-step-tag" data-rstep="${esc(r.id)}:${idx}" style="${checkedSet.has(idx)?'border-color:var(--green);color:var(--green)':''}">${checkedSet.has(idx)?'☑':'☐'} ${esc(st)}</button>`).join('')}
    </div>
@@ -887,7 +964,7 @@ $('routineForm').onsubmit=e=>{
  saveActive();$('routineForm').reset();renderAll();notify('Routine created!');
 };
 
-/* ==================== CATEGORIES ENGINE ==================== */
+/* CATEGORIES */
 function renderCategories(){
  const a = active();
  const cats = a.categories || DEFAULT_CATEGORIES;
@@ -896,8 +973,8 @@ function renderCategories(){
  $('categoryList').innerHTML = cats.map(c=>`<div class="cat-row">
   <div class="cat-badge" style="background:${esc(c.color)}">${esc(c.icon)}</div>
   <div class="grow"><strong>${esc(c.name)}</strong><small>${a.habits.filter(h=>h.categoryId===c.id).length} active habits</small></div>
-  <button type="button" class="icon-btn" data-editcat="${esc(c.id)}" title="Rename category">✎</button>
-  ${cats.length>1?`<button type="button" class="icon-btn" data-delcat="${esc(c.id)}" title="Delete category">×</button>`:''}
+  <button type="button" class="icon-btn" data-editcat="${esc(c.id)}" title="Rename category" aria-label="Rename category">✎</button>
+  ${cats.length>1?`<button type="button" class="icon-btn" data-delcat="${esc(c.id)}" title="Delete category" aria-label="Delete category">×</button>`:''}
  </div>`).join('');
 
  $('categoryList').querySelectorAll('[data-editcat]').forEach(btn=>btn.onclick=()=>{
@@ -923,10 +1000,10 @@ $('categoryForm').onsubmit=e=>{
  saveActive();$('categoryForm').reset();$('catIcon').value='✦';$('catColor').value='#873cff';renderAll();notify('Category added.');
 };
 
-/* ==================== STATISTICS ENGINE ==================== */
+/* STATISTICS */
 function renderStatistics(){
  const a = active();
- const today = isoDate(new Date());
+ const today = localIsoDate();
  const windowDates = Array.from({length:statWindowDays},(_,i)=>addDays(today, -(statWindowDays - 1 - i)));
  const last7Dates = Array.from({length:7},(_,i)=>addDays(today, -(6 - i)));
 
@@ -967,7 +1044,6 @@ function renderStatistics(){
    </div>
    <div class="mini-bars">
     ${last7Dates.map(dt=>{
-     const [,,dd] = dt.split('-');
      const hit = isHabitDone(h, dt);
      const lbl = new Date(dt+'T12:00:00').toLocaleDateString(undefined,{weekday:'short'}).slice(0,2);
      return `<div class="mini-bar-col"><div class="mini-bar-fill ${hit?'hit':''}" style="height:${hit?'100%':'22%'}"></div><span class="bar-label">${lbl}</span></div>`;
@@ -983,23 +1059,27 @@ document.querySelectorAll('[data-statdays]').forEach(btn=>btn.onclick=()=>{
  renderStatistics();
 });
 
-/* ==================== PIN LOCK & MODALS ==================== */
+/* PIN LOCK & MODALS */
 function updatePinUI(){
- const hasPin = !!(active()?.profile?.pin && active().profile.pin.length === 4);
+ const hasPin = !!active()?.profile?.pinHash;
  $('pinStatusPill').textContent = hasPin ? 'PIN ACTIVE' : 'PIN OFF';
  $('removePinBtn').classList.toggle('hidden', !hasPin);
  $('lockNowBtn').classList.toggle('hidden', !hasPin);
 }
-$('savePinBtn').onclick=()=>{
+$('savePinBtn').onclick=async()=>{
  const val = $('newPinInput').value.trim();
  if(!/^\d{4}$/.test(val)){notify('Enter exactly 4 digits for your PIN.');return;}
- active().profile.pin = val;
+ active().profile.pinHash = await hashPin(val);
  $('newPinInput').value = '';
- saveActive();updatePinUI();notify('4-digit PIN lock enabled!');
+ await saveActive();
+ updatePinUI();
+ notify('4-digit PIN lock enabled!');
 };
-$('removePinBtn').onclick=()=>{
- active().profile.pin = '';
- saveActive();updatePinUI();notify('PIN lock disabled.');
+$('removePinBtn').onclick=async()=>{
+ active().profile.pinHash = '';
+ await saveActive();
+ updatePinUI();
+ notify('PIN lock disabled.');
 };
 function openPinLock(){
  pinBuffer = '';
@@ -1010,7 +1090,7 @@ function renderPinDots(){
  $('pinDots').querySelectorAll('.pin-dot').forEach((dot,i)=>dot.classList.toggle('filled', i < pinBuffer.length));
 }
 $('lockNowBtn').onclick = openPinLock;
-$('pinPad').onclick = e => {
+$('pinPad').onclick = async e => {
  const key = e.target.closest('[data-digit]');
  if(!key) return;
  const d = key.dataset.digit;
@@ -1019,7 +1099,8 @@ $('pinPad').onclick = e => {
  else if(pinBuffer.length < 4) pinBuffer += d;
  renderPinDots();
  if(pinBuffer.length === 4){
-  if(pinBuffer === active()?.profile?.pin){
+  const enteredHash = await hashPin(pinBuffer);
+  if(enteredHash === active()?.profile?.pinHash){
    $('pinLockModal').classList.add('hidden');
    pinBuffer = '';
    notify('Workspace unlocked.');
@@ -1035,7 +1116,7 @@ $('guideBtn').onclick=()=>$('guideModal').classList.remove('hidden');
 $('closeGuideBtn').onclick=()=>$('guideModal').classList.add('hidden');
 $('gotItGuideBtn').onclick=()=>$('guideModal').classList.add('hidden');
 
-/* ==================== PROFILE, TASKS, BUDGET, ACADEMICS, GOALS ==================== */
+/* PROFILE, TASKS, BUDGET, ACADEMICS, GOALS */
 function renderProfile(){
  const p=active().profile,src=p.photo||defaultAvatar;
  ['sideAvatar','topAvatar','profileAvatar'].forEach(id=>$(id).src=src);
@@ -1051,7 +1132,7 @@ function renderTasks(){
  const items=a.tasks.filter(t=>(filter==='all'||(filter==='done'?t.done:!t.done))&&String(t.text||'').toLowerCase().includes(query))
   .sort((x,y)=>(x.done-y.done)||((x.due||'9999-12-31').localeCompare(y.due||'9999-12-31')));
  $('taskCount').textContent=a.tasks.length+' TASKS';
- $('taskList').innerHTML=items.length?items.map(t=>{const overdue=!t.done&&t.due&&t.due<isoDate(new Date());return `<div class="list-row ${t.done?'done':''}"><input type="checkbox" data-task="${esc(t.id)}" ${t.done?'checked':''} aria-label="Mark ${esc(t.text)} completed"><div class="grow"><strong>${esc(t.text)}</strong><small>${esc(t.category||'Personal')}${t.due?' · Due '+esc(t.due):''}${overdue?' · OVERDUE':''}</small></div><button class="icon-btn" data-edit-task="${esc(t.id)}" type="button" title="Edit task">✎</button><button class="icon-btn" data-delete-task="${esc(t.id)}" type="button" title="Delete task">×</button></div>`}).join(''):'<div class="empty">No tasks match this view.</div>';
+ $('taskList').innerHTML=items.length?items.map(t=>{const overdue=!t.done&&t.due&&t.due<localIsoDate();return `<div class="list-row ${t.done?'done':''}"><input type="checkbox" data-task="${esc(t.id)}" ${t.done?'checked':''} aria-label="Mark ${esc(t.text)} completed"><div class="grow"><strong>${esc(t.text)}</strong><small>${esc(t.category||'Personal')}${t.due?' · Due '+esc(t.due):''}${overdue?' · OVERDUE':''}</small></div><button class="icon-btn" data-edit-task="${esc(t.id)}" type="button" title="Edit task" aria-label="Edit task">✎</button><button class="icon-btn" data-delete-task="${esc(t.id)}" type="button" title="Delete task" aria-label="Delete task">×</button></div>`}).join(''):'<div class="empty">No tasks match this view.</div>';
  $('taskList').querySelectorAll('[data-task]').forEach(el=>el.onchange=()=>{const t=a.tasks.find(x=>x.id===el.dataset.task);if(!t)return;t.done=el.checked;t.completedAt=t.done?new Date().toISOString():null;saveActive();renderAll()});
  $('taskList').querySelectorAll('[data-edit-task]').forEach(el=>el.onclick=()=>{const t=a.tasks.find(x=>x.id===el.dataset.editTask);if(!t)return;const value=prompt('Edit task title:',t.text);if(value===null)return;if(!value.trim()){notify('Task title cannot be empty.');return}t.text=value.trim().slice(0,120);saveActive();renderAll();notify('Task updated.')});
  $('taskList').querySelectorAll('[data-delete-task]').forEach(el=>el.onclick=()=>{a.tasks=a.tasks.filter(x=>x.id!==el.dataset.deleteTask);saveActive();renderAll()});
@@ -1061,11 +1142,11 @@ $('taskFilter').onchange=renderTasks;$('taskSearch').oninput=renderTasks;
 
 function renderBudget(){
  const a=active();
- $('budgetList').innerHTML=a.budgets.length?a.budgets.map(b=>`<div class="list-row"><div class="grow"><strong>${esc(b.name||'Untitled expense')}</strong><small>${esc(b.category||'Other')} · ${esc(b.date||'Date not set')} · ${b.paid?'Paid':'Planned / unpaid'}</small></div><strong>${money(b.amount)}</strong><button class="icon-btn" data-toggle-paid="${esc(b.id)}" type="button" title="Change payment status">${b.paid?'↶':'✓'}</button><button class="icon-btn" data-delete-budget="${esc(b.id)}" type="button" title="Delete expense">×</button></div>`).join(''):'<div class="empty">No expenses recorded yet.</div>';
+ $('budgetList').innerHTML=a.budgets.length?a.budgets.map(b=>`<div class="list-row"><div class="grow"><strong>${esc(b.name||'Untitled expense')}</strong><small>${esc(b.category||'Other')} · ${esc(b.date||'Date not set')} · ${b.paid?'Paid':'Planned / unpaid'}</small></div><strong>${money(b.amount)}</strong><button class="icon-btn" data-toggle-paid="${esc(b.id)}" type="button" title="Change payment status" aria-label="Change payment status">${b.paid?'↶':'✓'}</button><button class="icon-btn" data-delete-budget="${esc(b.id)}" type="button" title="Delete expense" aria-label="Delete expense">×</button></div>`).join(''):'<div class="empty">No expenses recorded yet.</div>';
  const total=a.budgets.reduce((sum,b)=>sum+Number(b.amount||0),0),paid=a.budgets.filter(b=>b.paid).reduce((sum,b)=>sum+Number(b.amount||0),0);
  $('budgetTotal').textContent=money(total)+' · '+money(paid)+' paid';$('statBudget').textContent=money(total);
 }
-$('budgetForm').onsubmit=e=>{e.preventDefault();const amount=Number($('budgetAmount').value);if(!Number.isFinite(amount)||amount<=0){notify('Enter a valid expense amount.');return}active().budgets.unshift({id:crypto.randomUUID(),name:$('budgetName').value.trim(),amount,category:$('budgetCategory').value,date:$('budgetDate').value||isoDate(new Date()),paid:$('budgetPaid').value==='paid'});saveActive();$('budgetForm').reset();renderAll();notify('Expense added.')};
+$('budgetForm').onsubmit=e=>{e.preventDefault();const amount=Number($('budgetAmount').value);if(!Number.isFinite(amount)||amount<=0){notify('Enter a valid expense amount.');return}active().budgets.unshift({id:crypto.randomUUID(),name:$('budgetName').value.trim(),amount,category:$('budgetCategory').value,date:$('budgetDate').value||localIsoDate(),paid:$('budgetPaid').value==='paid'});saveActive();$('budgetForm').reset();renderAll();notify('Expense added.')};
 $('budgetList').onclick=e=>{const a=active(),toggle=e.target.closest('[data-toggle-paid]'),b=e.target.closest('[data-delete-budget]');if(toggle){const item=a.budgets.find(x=>x.id===toggle.dataset.togglePaid);if(item){item.paid=!item.paid;saveActive();renderAll()}}if(b){a.budgets=a.budgets.filter(x=>x.id!==b.dataset.deleteBudget);saveActive();renderAll()}};
 
 function gradeClass(mark){return mark>=80?'A · Excellent':mark>=70?'B · Very good':mark>=60?'C · Good':mark>=50?'D · Pass':'F · Needs improvement'}
@@ -1074,20 +1155,20 @@ function exportTranscript(){const rows=active().academics;if(!rows.length){notif
 $('transcriptExport').onclick=exportTranscript;
 function renderAcademics(){
  const a=active(),list=a.academics;
- $('academicList').innerHTML=list.length?list.map(x=>`<div class="list-row"><div class="grow"><strong>${esc((x.code?x.code+' · ':'')+(x.name||'Untitled result'))}</strong><small>${esc(x.term||'No semester')} · ${esc(x.date||'No date')} · Weight ${Number(x.weight||1)} · ${gradeClass(Number(x.grade))}</small></div><span class="pill">${Number(x.grade)}/100</span><button class="icon-btn" data-delete-ac="${esc(x.id)}" type="button" title="Delete result">×</button></div>`).join(''):'<div class="empty">No academic results added yet.</div>';
+ $('academicList').innerHTML=list.length?list.map(x=>`<div class="list-row"><div class="grow"><strong>${esc((x.code?x.code+' · ':'')+(x.name||'Untitled result'))}</strong><small>${esc(x.term||'No semester')} · ${esc(x.date||'No date')} · Weight ${Number(x.weight||1)} · ${gradeClass(Number(x.grade))}</small></div><span class="pill">${Number(x.grade)}/100</span><button class="icon-btn" data-delete-ac="${esc(x.id)}" type="button" title="Delete result" aria-label="Delete result">×</button></div>`).join(''):'<div class="empty">No academic results added yet.</div>';
  const weightTotal=list.reduce((sum,x)=>sum+Math.max(.1,Number(x.weight)||1),0),weighted=list.length?list.reduce((sum,x)=>sum+Number(x.grade||0)*Math.max(.1,Number(x.weight)||1),0)/weightTotal:null;
  $('academicAverage').textContent='WEIGHTED AVG: '+(weighted===null?'—':weighted.toFixed(1)+'/100');const terms=[...new Set(list.map(x=>x.term||'Unassigned'))];$('semesterSummary').innerHTML=terms.length?terms.map(term=>{const rows=list.filter(x=>(x.term||'Unassigned')===term),w=rows.reduce((n,x)=>n+Math.max(.1,Number(x.weight)||1),0),avg=rows.reduce((n,x)=>n+Number(x.grade||0)*Math.max(.1,Number(x.weight)||1),0)/w;return `<div style="padding:7px 0"><strong>${esc(term)}</strong> · ${avg.toFixed(1)}% · GPA ${gradePoints(avg).toFixed(2)}/4.00 · ${gradeClass(avg)}</div>`}).join(''):'No semester results yet.';
 }
 $('academicForm').onsubmit=e=>{e.preventDefault();const grade=Number($('academicGrade').value),weight=Number($('academicWeight').value);if(!Number.isFinite(grade)||grade<0||grade>100){notify('Enter a mark from 0 to 100.');return}if(!Number.isFinite(weight)||weight<=0){notify('Weight must be greater than zero.');return}active().academics.unshift({id:crypto.randomUUID(),code:$('academicCode').value.trim(),name:$('academicName').value.trim(),grade,weight,term:$('academicTerm').value.trim(),date:$('academicDate').value});saveActive();$('academicForm').reset();$('academicWeight').value='1';renderAll();notify('Result saved.')};
 $('academicList').onclick=e=>{const b=e.target.closest('[data-delete-ac]');if(b){active().academics=active().academics.filter(x=>x.id!==b.dataset.deleteAc);saveActive();renderAll()}};
 
-function renderGoals(){const a=active();$('goalList').innerHTML=a.goals.length?a.goals.map(g=>{const pct=g.target>0?Math.max(0,Math.min(100,Math.round(Number(g.current||0)/Number(g.target)*100))):(g.done?100:0);return `<div class="list-row ${g.done?'done':''}"><input type="checkbox" data-goal="${esc(g.id)}" ${g.done?'checked':''} aria-label="Mark goal completed"><div class="grow"><strong>${esc(g.text)}</strong><small>${g.done?'Completed':'In progress'}${g.due?' · Target '+esc(g.due):''}${g.measure?' · Measure: '+esc(g.measure):''}</small><div class="progress" style="margin-top:8px"><i style="width:${pct}%"></i></div><small>${pct}% complete${g.target?' · '+esc(g.current||0)+' / '+esc(g.target):''}${g.why?' · '+esc(g.why):''}</small>${g.plan?`<small>Next step: ${esc(g.plan)}</small>`:''}<div style="display:flex;gap:6px;align-items:center;margin-top:7px"><input type="number" min="0" step="any" value="${esc(g.current||0)}" data-goal-progress="${esc(g.id)}" aria-label="Current progress" style="width:90px;background:#0b0f22;color:white;border:1px solid var(--line);padding:6px;border-radius:8px"><small>Update progress</small></div></div><button class="icon-btn" data-edit-goal="${esc(g.id)}" type="button" title="Edit goal">✎</button><button class="icon-btn" data-delete-goal="${esc(g.id)}" type="button" title="Delete goal">×</button></div>`}).join(''):'<div class="empty">No goals yet. Add a SMART goal to get started.</div>';$('goalCount').textContent=a.goals.length+' GOALS';const pct=a.goals.length?Math.round(a.goals.filter(g=>g.done).length/a.goals.length*100):0;$('statGoals').textContent=pct+'%'}
+function renderGoals(){const a=active();$('goalList').innerHTML=a.goals.length?a.goals.map(g=>{const pct=g.target>0?Math.max(0,Math.min(100,Math.round(Number(g.current||0)/Number(g.target)*100))):(g.done?100:0);return `<div class="list-row ${g.done?'done':''}"><input type="checkbox" data-goal="${esc(g.id)}" ${g.done?'checked':''} aria-label="Mark goal completed"><div class="grow"><strong>${esc(g.text)}</strong><small>${g.done?'Completed':'In progress'}${g.due?' · Target '+esc(g.due):''}${g.measure?' · Measure: '+esc(g.measure):''}</small><div class="progress" style="margin-top:8px"><i style="width:${pct}%"></i></div><small>${pct}% complete${g.target?' · '+esc(g.current||0)+' / '+esc(g.target):''}${g.why?' · '+esc(g.why):''}</small>${g.plan?`<small>Next step: ${esc(g.plan)}</small>`:''}<div style="display:flex;gap:6px;align-items:center;margin-top:7px"><input type="number" min="0" step="any" value="${esc(g.current||0)}" data-goal-progress="${esc(g.id)}" aria-label="Current progress" style="width:90px;background:#0b0f22;color:white;border:1px solid var(--line);padding:6px;border-radius:8px"><small>Update progress</small></div></div><button class="icon-btn" data-edit-goal="${esc(g.id)}" type="button" title="Edit goal" aria-label="Edit goal">✎</button><button class="icon-btn" data-delete-goal="${esc(g.id)}" type="button" title="Delete goal" aria-label="Delete goal">×</button></div>`}).join(''):'<div class="empty">No goals yet. Add a SMART goal to get started.</div>';$('goalCount').textContent=a.goals.length+' GOALS';const pct=a.goals.length?Math.round(a.goals.filter(g=>g.done).length/a.goals.length*100):0;$('statGoals').textContent=pct+'%'}
 $('goalForm').onsubmit=e=>{e.preventDefault();const target=Number($('goalTarget').value),current=Number($('goalCurrent').value||0);if(!Number.isFinite(target)||target<=0||!Number.isFinite(current)||current<0){notify('Enter valid current and target values.');return;}active().goals.unshift({id:crypto.randomUUID(),text:$('goalText').value.trim(),measure:$('goalMeasure').value.trim(),current,target,why:$('goalWhy').value.trim(),plan:$('goalPlan').value.trim(),due:$('goalDue').value,done:current>=target,createdAt:new Date().toISOString()});saveActive();$('goalForm').reset();$('goalCurrent').value='0';$('goalTarget').value='3';renderAll();notify('SMART goal created.')};
 $('goalList').onchange=e=>{const a=active(),progress=e.target.closest('[data-goal-progress]'),c=e.target.closest('[data-goal]');if(progress){const g=a.goals.find(x=>x.id===progress.dataset.goalProgress);if(g){g.current=Math.max(0,Number(progress.value)||0);g.done=g.target>0&&g.current>=g.target;saveActive();renderAll();}}if(c){const g=a.goals.find(x=>x.id===c.dataset.goal);if(g){g.done=c.checked;if(g.target)g.current=g.done?g.target:0;g.completedAt=g.done?new Date().toISOString():null;saveActive();renderAll()}}};
 $('goalList').onclick=e=>{const a=active(),d=e.target.closest('[data-delete-goal]'),edit=e.target.closest('[data-edit-goal]');if(edit){const g=a.goals.find(x=>x.id===edit.dataset.editGoal);if(g){const value=prompt('Edit goal:',g.text);if(value!==null&&value.trim()){g.text=value.trim().slice(0,120);saveActive();renderAll()}}}if(d){a.goals=a.goals.filter(x=>x.id!==d.dataset.deleteGoal);saveActive();renderAll()}};
 
 function renderOverview(){
- const a=active(), today=isoDate(new Date());
+ const a=active(), today=localIsoDate();
  const open=a.tasks.filter(t=>!t.done).length, done=a.tasks.filter(t=>t.done).length;
  const habitsDoneToday = a.habits.filter(h=>isHabitDone(h, today)).length;
  $('statHabits').textContent = `${habitsDoneToday}/${a.habits.length}`;
@@ -1101,7 +1182,6 @@ function renderOverview(){
  $('todayProgress').style.width = pct+'%';
  $('todayProgressText').textContent = pct+'% of today\'s tasks & habits completed';
 
- // Today's habits quick preview on Overview
  $('overviewHabitsList').innerHTML = a.habits.length ? a.habits.slice(0,4).map(h=>{
   const cat = getCat(h.categoryId);
   const count = getHabitCount(h, today);
@@ -1116,7 +1196,7 @@ function renderOverview(){
   </div>`;
  }).join('') : '<div class="empty">No habits yet. Go to <strong>My Habits</strong> to add your first habit.</div>';
 
- $('overviewHabitsList').querySelectorAll('[data-ovhabit]').forEach(btn=>btn.onclick=()=>toggleHabitStep(btn.dataset.ovhabit, today, false));
+ $('overviewHabitsList').querySelectorAll('[data-ovhabit]').forEach(btn=>btn.onclick=()=>stepHabit(btn.dataset.ovhabit, today, 1));
 
  const recent=a.tasks.filter(t=>!t.done).slice(0,4);
  $('priorityList').innerHTML=recent.length?recent.map(t=>`<div class="priority-item"><strong>${esc(t.text)}</strong><small>${esc(t.category)}${t.due?' · '+esc(t.due):''}</small></div>`).join(''):'<div class="empty">You are all caught up. Nice work!</div>';
@@ -1129,7 +1209,7 @@ function renderOverview(){
   start.setHours(0,0,0,0);
   const dayDate = new Date(start);
   dayDate.setDate(start.getDate()+i);
-  const dayIso = isoDate(dayDate);
+  const dayIso = localIsoDate(dayDate);
   const end=new Date(dayDate);end.setDate(dayDate.getDate()+1);
   const taskN=a.tasks.filter(t=>t.done&&t.completedAt&&new Date(t.completedAt)>=dayDate&&new Date(t.completedAt)<end).length;
   const habitN=a.habits.filter(h=>isHabitDone(h, dayIso)).length;
@@ -1143,7 +1223,7 @@ function renderOverview(){
 $('profilePhoto').onchange=async e=>{if(e.target.files[0])try{profilePhotoData=await compressImage(e.target.files[0]);notify('New picture selected. Save profile to apply it.')}catch(err){notify(err.message)}};
 $('profileForm').onsubmit=e=>{e.preventDefault();const p=active().profile;p.name=$('profileEditName').value.trim();p.course=$('profileCourse').value.trim();p.year=$('profileYear').value.trim();p.bio=$('profileBio').value.trim();if(profilePhotoData)p.photo=profilePhotoData;profilePhotoData='';saveActive();renderAll();notify('Profile updated.')};
 
-/* ==================== EXCEL, JSON & LEGACY IMPORTS ==================== */
+/* EXCEL, JSON & LEGACY IMPORTS */
 function budgetExportRows(){
  return active().budgets.map(b=>({
   'Expense':String(b.name||''),'Amount (RWF)':Number(b.amount)||0,
@@ -1220,12 +1300,14 @@ function importLegacyIndexx(file){
    const source=String(reader.result||'');
    let legacy=null;
    if(file.name.toLowerCase().endsWith('.json')||/^\s*\{/.test(source)){try{legacy=JSON.parse(source);}catch{}}
-   if(!legacy||typeof legacy!=='object')throw new Error('Select a valid JSON export file.');
+   const jsonScript=source.match(/<script[^>]+type=["']application\/json["'][^>]*>([\s\S]*?)<\/script>/i);
+   if(!legacy && jsonScript){try{legacy=JSON.parse(jsonScript[1]);}catch{}}
+   if(!legacy||typeof legacy!=='object')throw new Error('Select a valid JSON export or HTML file with embedded JSON.');
    const old=legacy.account||legacy.state||legacy;
    const current=active();
    if(Array.isArray(old.budgets)) current.budgets.push(...old.budgets.map(b=>({...b,id:crypto.randomUUID()})));
    if(Array.isArray(old.tasks)) current.tasks.push(...old.tasks.map(t=>({...t,id:crypto.randomUUID()})));
-   if(Array.isArray(old.habits)) current.habits.push(...old.habits.map(h=>({...h,id:crypto.randomUUID()})));
+   if(Array.isArray(old.habits)) current.habits.push(...old.habits.map(h=>({...h,id:crypto.randomUUID(),logs:h.logs||{}})));
    saveActive();renderAll();notify('Legacy data imported.');
   }catch(err){notify(err.message||'Could not import legacy file.');}
   finally{$('legacyImportFile').value='';}
@@ -1241,7 +1323,7 @@ async function enableReminders(){
 }
 function checkDueReminders(){
  if(!('Notification' in window)||Notification.permission!=='granted'||!active())return;
- const today=isoDate(new Date()),key='orbit_reminded_'+currentUser.id+'_'+today;
+ const today=localIsoDate(),key='orbit_reminded_'+currentUser.id+'_'+today;
  if(sessionStorage.getItem(key))return;
  const dueTasks=active().tasks.filter(t=>!t.done&&t.due&&t.due<=today).length;
  const openHabits=active().habits.filter(h=>!isHabitDone(h,today)).length;
