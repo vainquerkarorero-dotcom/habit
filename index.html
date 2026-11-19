@@ -1,12 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
+<meta name="description" content="DO YOUR BIT is a personal habit tracker, daily routine planner, task manager, SMART goal tracker, and budget workspace in English and Kinyarwanda.">
+<meta name="robots" content="index, follow">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#090b18">
-<meta name="description" content="ORBIT — your personal destiny & habit workspace">
+<meta name="description" content="DO YOUR BIT — your personal destiny & habit workspace">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23b36cff'/%3E%3Cstop offset='1' stop-color='%234c1ba8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='%230d1022'/%3E%3Cpath d='M32 7 39 24 57 32 39 40 32 57 25 40 7 32 25 24Z' fill='url(%23g)'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23fff'/%3E%3C/svg%3E">
-<title>ORBIT — Personal & Habit Workspace</title>
+<title>DO YOUR BIT — Personal & Habit Workspace</title>
 <style>
 :root{--bg:#090b18;--panel:#101329;--panel2:#151a35;--card:#11162d;--line:#252b4b;--text:#f5f6ff;--muted:#9299b8;--purple:#873cff;--purple2:#b36cff;--cyan:#35d9d0;--green:#36d98a;--amber:#ffb547;--red:#ff647c;--shadow:0 18px 55px #0007}
 *{box-sizing:border-box}
@@ -224,7 +226,7 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
 <div id="authView" class="auth-wrap">
   <div class="auth-card">
     <div style="display:flex;justify-content:space-between;align-items:center">
-     <div class="brand"><div class="brand-mark">O</div><span>ORBIT <span style="color:#a77aff">WORKSPACE</span></span></div>
+     <div class="brand"><div class="brand-mark">O</div><span>DO YOUR BIT <span style="color:#a77aff">WORKSPACE</span></span></div>
      <button class="icon-btn lang-toggle" id="authLangBtn" type="button" title="Switch language (English / Kinyarwanda)">EN / RW</button>
     </div>
     <div id="loginPane">
@@ -232,7 +234,7 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
       <form id="loginForm">
         <div class="field"><label for="loginEmail" data-i18n="emailLabel">EMAIL ADDRESS</label><input id="loginEmail" type="email" autocomplete="username" required placeholder="you@example.com"></div>
         <div class="field"><label for="loginPassword" data-i18n="passwordLabel">PASSWORD</label><input id="loginPassword" type="password" autocomplete="current-password" required minlength="8" placeholder="Your password"></div>
-        <button class="btn full" type="submit" data-i18n="signInBtn">Sign in to ORBIT</button>
+        <button class="btn full" type="submit" data-i18n="signInBtn">Sign in to DO YOUR BIT</button>
         <div class="switch-auth"><button id="forgotPassword" type="button" data-i18n="forgotPw">Forgot password?</button></div>
       </form>
       <div class="switch-auth"><span data-i18n="newHere">New here?</span> <button id="showSignup" type="button" data-i18n="createAccLink">Create an account</button></div>
@@ -257,7 +259,7 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
 <!-- MAIN APP VIEW -->
 <div id="appView" class="app hidden">
  <aside class="sidebar">
-  <div class="side-brand"><div class="brand"><div class="brand-mark">O</div><span class="brand-text">ORBIT</span></div></div>
+  <div class="side-brand"><div class="brand"><div class="brand-mark">O</div><span class="brand-text">DO YOUR BIT</span></div></div>
   <nav class="side-nav" aria-label="Primary navigation">
    <div class="side-group-label" data-i18n="grpDaily">Daily Flow</div>
    <button class="nav-btn active" data-section="overview" type="button"><span class="ico">▦</span><span class="nav-text" data-i18n="navOverview">Overview</span></button>
@@ -284,7 +286,7 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
    <h2 id="pageTitle">Overview</h2>
    <div class="top-actions import-controls">
     <button class="icon-btn hidden" id="lockNowBtn" title="Lock workspace with PIN" aria-label="Lock workspace">🔒</button>
-    <button class="icon-btn" id="guideBtn" title="How ORBIT Habits works" aria-label="How ORBIT works">?</button>
+    <button class="icon-btn" id="guideBtn" title="How DO YOUR BIT Habits works" aria-label="How DO YOUR BIT works">?</button>
     <button class="icon-btn" id="exportBtn" title="Export backup" aria-label="Export backup">⇩</button>
     <button class="icon-btn" id="importBtn" title="Import backup" aria-label="Import backup">⇧</button>
     <button class="icon-btn lang-toggle" id="langBtn" title="Switch language (English / Kinyarwanda)" aria-label="Switch language">EN</button>
@@ -551,7 +553,7 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
     </div>
    </section>
 
-   <footer class="footer-brand">© 2026 Vendor Tech Hub ™ · ORBIT Workspace · All rights reserved.</footer>
+   <footer class="footer-brand">© 2026 Vendor Tech Hub ™ · DO YOUR BIT Workspace · All rights reserved.</footer>
   </div>
  </main>
 </div>
@@ -579,7 +581,7 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
 <!-- HOW IT WORKS MODAL -->
 <div id="guideModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="guideTitle">
  <div class="modal-card">
-  <div class="panel-head"><h3 id="guideTitle">✦ How ORBIT Habits & Workspace Works</h3><button class="icon-btn" id="closeGuideBtn" type="button" aria-label="Close guide">×</button></div>
+  <div class="panel-head"><h3 id="guideTitle">✦ How DO YOUR BIT Habits & Workspace Works</h3><button class="icon-btn" id="closeGuideBtn" type="button" aria-label="Close guide">×</button></div>
   <div class="list" style="margin-top:10px">
    <div class="list-row"><span class="cat-badge" style="background:#7129e9">★</span><div class="grow"><strong>1. Track Daily Habits & Streaks</strong><small>Select any day on the 7-day strip, check off habits or step multi-count targets (like 0 of 4), and keep your flame streak growing.</small></div></div>
    <div class="list-row"><span class="cat-badge" style="background:#0d9488">⟳</span><div class="grow"><strong>2. Shared Workspace Categories</strong><small>Any custom category you create in Categories automatically appears in both My Habits and Budget Expenses.</small></div></div>
@@ -593,7 +595,7 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
 <!-- PIN LOCK OVERLAY -->
 <div id="pinLockModal" class="modal-backdrop hidden" style="z-index:60" role="dialog" aria-modal="true" aria-label="PIN Lock">
  <div class="modal-card" style="text-align:center;max-width:360px">
-  <div class="brand" style="justify-content:center;margin-bottom:10px"><div class="brand-mark">O</div><span>ORBIT LOCKED</span></div>
+  <div class="brand" style="justify-content:center;margin-bottom:10px"><div class="brand-mark">O</div><span>DO YOUR BIT LOCKED</span></div>
   <p class="muted" style="font-size:12px">Enter your 4-digit security PIN to unlock your workspace.</p>
   <div class="pin-dots" id="pinDots"><span class="pin-dot"></span><span class="pin-dot"></span><span class="pin-dot"></span><span class="pin-dot"></span></div>
   <div class="pin-pad" id="pinPad">
@@ -610,8 +612,8 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const $ = id => document.getElementById(id);
-const THEME_KEY = 'orbit_theme_v1';
-const LANG_KEY = 'orbit_lang_v1';
+const THEME_KEY = 'DO YOUR BIT_theme_v1';
+const LANG_KEY = 'DO YOUR BIT_lang_v1';
 const APP_REDIRECT_URL = 'https://habit-vainquerkarorero.wasmer.app/';
 const SUPABASE_URL = 'https://ixrfrkqicikvqdkljlvl.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_h_j6GKM7lbw7uMSt9tG30g_Y8IBU3F3';
@@ -629,7 +631,7 @@ const defaultAvatar = 'https://i.pravatar.cc/120?img=12';
 /* ENGLISH & KINYARWANDA DICTIONARY */
 const I18N = {
  en: {
-  welcomeBack:'Welcome back',signInSub:'Sign in to open your personal & habit workspace.',emailLabel:'EMAIL ADDRESS',passwordLabel:'PASSWORD',signInBtn:'Sign in to ORBIT',forgotPw:'Forgot password?',newHere:'New here?',createAccLink:'Create an account',
+  welcomeBack:'Welcome back',signInSub:'Sign in to open your personal & habit workspace.',emailLabel:'EMAIL ADDRESS',passwordLabel:'PASSWORD',signInBtn:'Sign in to DO YOUR BIT',forgotPw:'Forgot password?',newHere:'New here?',createAccLink:'Create an account',
   createAccTitle:'Create your account',createAccSub:'Create your secure account and sync your workspace across devices.',profilePic:'Profile picture',fullNameLabel:'FULL NAME',courseLabel:'COURSE / ROLE',yearLabel:'YEAR / LEVEL',createPwLabel:'CREATE PASSWORD (8+ CHARACTERS)',confirmPwLabel:'CONFIRM PASSWORD',createWorkspaceBtn:'Create my workspace',alreadyHave:'Already have an account?',signInLink:'Sign in',
   grpDaily:'Daily Flow',grpWorkspace:'Workspace',grpInsights:'Insights & Security',
   navOverview:'Overview',navHabits:'My Habits',navRoutines:'Routines',navTasks:'My Tasks',navBudget:'Budget',navAcademics:'Academics',navGoals:'Goals',navCategories:'Categories',navStatistics:'Statistics',navSettings:'Settings & PIN',signOut:'Sign out',
@@ -647,7 +649,7 @@ const I18N = {
   profileTitle:'My profile & settings',profileSub:'Click your photo to view or change it, update your password, or manage security.',securityTitle:'🔐 Password & Account Security',securitySub:'Change your login password or permanently delete your account',newPwLbl:'New Password (8+ chars)',confirmNewPwLbl:'Confirm New Password',updatePwBtn:'Update Password',dangerZoneTitle:'Delete Account & Workspace',dangerZoneSub:'Permanently erase all cloud records and close your session.',deleteAccBtn:'Delete Account',editProfileTitle:'Edit profile',saveProfileBtn:'Save profile'
  },
  rw: {
-  welcomeBack:'Murakaza neza',signInSub:'Injira mu rubuga rwawe rwo gukurikirana imigenzo n’imirimo.',emailLabel:'IMEYILI YAWE',passwordLabel:'IJAMBO RY’IBANGA',signInBtn:'Injira muri ORBIT',forgotPw:'Wibagiwe ijambo ry’ibanga?',newHere:'Uri mushya hano?',createAccLink:'Fungura konti',
+  welcomeBack:'Murakaza neza',signInSub:'Injira mu rubuga rwawe rwo gukurikirana imigenzo n’imirimo.',emailLabel:'IMEYILI YAWE',passwordLabel:'IJAMBO RY’IBANGA',signInBtn:'Injira muri DO YOUR BIT',forgotPw:'Wibagiwe ijambo ry’ibanga?',newHere:'Uri mushya hano?',createAccLink:'Fungura konti',
   createAccTitle:'Fungura konti yawe',createAccSub:'Fungura konti irinzwe kandi ibika amakuru yawe kuri interineti.',profilePic:'Ifoto yawe',fullNameLabel:'AMAZINA YOSE',courseLabel:'ISHAMI / UMURIMO',yearLabel:'UMWAKA / URWEGO',createPwLabel:'SHYIRAHO IJAMBO RY’IBANGA (INYUGUTI 8+)',confirmPwLabel:'EMEZA IJAMBO RY’IBANGA',createWorkspaceBtn:'Fungura urubuga rwanjye',alreadyHave:'Usanganywe konti?',signInLink:'Injira',
   grpDaily:'Ibikorwa bya buri munsi',grpWorkspace:'Urubuga rwanjye',grpInsights:'Imibare n’Umutekano',
   navOverview:'Incamake',navHabits:'Imigenzo yanjye',navRoutines:'Gahunda',navTasks:'Imirimo yanjye',navBudget:'Ingengo y’imari',navAcademics:'Amasomo',navGoals:'Intego',navCategories:'Ibyiciro',navStatistics:'Imibare (Histogram)',navSettings:'Umwirondoro & PIN',signOut:'Sohoka',
@@ -662,7 +664,7 @@ const I18N = {
   budgetTitle:'Ingengo y’imari',budgetSub:'Kurikirana amafaranga akoreshwa muri RWF ukoresheje ibyiciro byawe.',expensesTitle:'Ibyakoreshejwe',newExpenseTitle:'Ikiguzi gishya',addExpenseBtn:'Ongeraho ikiguzi',
   acadTitle:'Amasomo',acadSub:'Bika amanota y’ibizamini n’imikoro.',acadRecordsTitle:'Amanota yanjye',addResultTitle:'Ongeraho inota',saveResultBtn:'Bika inota',
   goalsTitle:'Intego',goalsSub:'Shyiraho intego zifatika kandi ukurikirane aho ugeze.',yourGoalsTitle:'Intego zawe',createGoalTitle:'Shyiraho Intego ya SMART',createGoalBtn:'Bika Intego',
-  profileTitle:'Umwirondoro n’Igenamiterere',profileSub:'Kanda ku ifoto yawe uyirebe cyangwa uyihindure, uhindure ijambo ry’ibanga.',securityTitle:'🔐 Ijambo ry’Ibanga n’Umutekano',securitySub:'Hindura ijambo ry’ibanga cyangwa usibe konti yawe burundu',newPwLbl:'Ijambo ry’ibanga rishya (8+)',confirmNewPwLbl:'Emeza ijambo ry’ibanga rishya',updatePwBtn:'Hindura Ijambo ry’Ibanga',dangerZoneTitle:'Siba Konti n’Amakuru Yose',dangerZoneSub:'Siba burundu amakuru yawe yose muri ORBIT.',deleteAccBtn:'Siba Konti',editProfileTitle:'Hindura umwirondoro',saveProfileBtn:'Bika umwirondoro'
+  profileTitle:'Umwirondoro n’Igenamiterere',profileSub:'Kanda ku ifoto yawe uyirebe cyangwa uyihindure, uhindure ijambo ry’ibanga.',securityTitle:'🔐 Ijambo ry’Ibanga n’Umutekano',securitySub:'Hindura ijambo ry’ibanga cyangwa usibe konti yawe burundu',newPwLbl:'Ijambo ry’ibanga rishya (8+)',confirmNewPwLbl:'Emeza ijambo ry’ibanga rishya',updatePwBtn:'Hindura Ijambo ry’Ibanga',dangerZoneTitle:'Siba Konti n’Amakuru Yose',dangerZoneSub:'Siba burundu amakuru yawe yose muri DO YOUR BIT.',deleteAccBtn:'Siba Konti',editProfileTitle:'Hindura umwirondoro',saveProfileBtn:'Bika umwirondoro'
  }
 };
 
@@ -733,7 +735,7 @@ function addDays(baseIso, delta){
 let selectedHabitDate = localIsoDate();
 
 async function hashPin(pin){
- const enc = new TextEncoder().encode(pin + ':orbit_pin_salt_v1');
+ const enc = new TextEncoder().encode(pin + ':DO YOUR BIT_pin_salt_v1');
  const buf = await crypto.subtle.digest('SHA-256', enc);
  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
 }
@@ -780,15 +782,15 @@ function normalizeWorkspace(data,email){
 
 async function loadWorkspace(user){
  currentUser=user;currentEmail=user.email.toLowerCase();
- const {data,error}=await supabaseClient.from('orbit_workspaces').select('data').eq('user_id',user.id).maybeSingle();
+ const {data,error}=await supabaseClient.from('DO YOUR BIT_workspaces').select('data').eq('user_id',user.id).maybeSingle();
  if(error)throw new Error('Could not load cloud workspace: '+error.message);
  let workspace=data?.data||null;
- if((!workspace||!Array.isArray(workspace.tasks))&&localStorage.getItem('orbit_local_accounts_v1')){
-  try{const legacy=JSON.parse(localStorage.getItem('orbit_local_accounts_v1')||'{}')[currentEmail];if(legacy)workspace=legacy;}catch{}
+ if((!workspace||!Array.isArray(workspace.tasks))&&localStorage.getItem('DO YOUR BIT_local_accounts_v1')){
+  try{const legacy=JSON.parse(localStorage.getItem('DO YOUR BIT_local_accounts_v1')||'{}')[currentEmail];if(legacy)workspace=legacy;}catch{}
  }
  accounts[currentEmail]=normalizeWorkspace(workspace||freshUser(user.user_metadata?.full_name||user.email.split('@')[0],user.email,user.user_metadata?.course||'',user.user_metadata?.year||''),currentEmail);
  if(!data||workspace!==data.data){
-  const {error:saveError}=await supabaseClient.from('orbit_workspaces').upsert({user_id:user.id,data:accounts[currentEmail],updated_at:new Date().toISOString()},{onConflict:'user_id'});
+  const {error:saveError}=await supabaseClient.from('DO YOUR BIT_workspaces').upsert({user_id:user.id,data:accounts[currentEmail],updated_at:new Date().toISOString()},{onConflict:'user_id'});
   if(saveError)throw new Error('Workspace table error: '+saveError.message);
  }
  openApp();
@@ -798,7 +800,7 @@ function saveActive(){
  if(!currentUser||!active())return Promise.resolve();
  const snapshot=JSON.parse(JSON.stringify(active())),userId=currentUser.id;
  cloudSaveQueue=cloudSaveQueue.then(async()=>{
-  const {error}=await supabaseClient.from('orbit_workspaces').upsert({user_id:userId,data:snapshot,updated_at:new Date().toISOString()},{onConflict:'user_id'});
+  const {error}=await supabaseClient.from('DO YOUR BIT_workspaces').upsert({user_id:userId,data:snapshot,updated_at:new Date().toISOString()},{onConflict:'user_id'});
   if(error)throw error;
  }).catch(err=>{notify('Cloud save failed: '+(err.message||'Check your connection.'));});
  return cloudSaveQueue;
@@ -897,7 +899,7 @@ function showSection(name){
   budget:t('budgetTitle'),academics:t('acadTitle'),goals:t('goalsTitle'),categories:t('catsTitle'),
   statistics:t('statsTitle'),profile:t('profileTitle')
  };
- $('pageTitle').textContent = titleMap[name] || 'ORBIT';
+ $('pageTitle').textContent = titleMap[name] || 'DO YOUR BIT';
 }
 document.querySelectorAll('[data-section]').forEach(b=>b.addEventListener('click',()=>showSection(b.dataset.section)));
 document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showSection(b.dataset.go)));
@@ -976,7 +978,7 @@ $('deleteAccountBtn').onclick = async () => {
     const { error } = await supabaseClient.rpc('delete_user');
     if (error) throw error;
   }
-  localStorage.removeItem('orbit_local_accounts_v1');
+  localStorage.removeItem('DO YOUR BIT_local_accounts_v1');
   await logout();
   notify(
     currentLang === 'rw'
@@ -1429,7 +1431,7 @@ $('budgetList').onclick=e=>{const a=active(),toggle=e.target.closest('[data-togg
 
 function gradeClass(mark){return mark>=80?'A · Excellent':mark>=70?'B · Very good':mark>=60?'C · Good':mark>=50?'D · Pass':'F · Needs improvement'}
 function gradePoints(mark){return mark>=80?4:mark>=70?3:mark>=60?2:mark>=50?1:0}
-function exportTranscript(){const rows=active().academics;if(!rows.length){notify('No academic records to export.');return;}const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const lines=[['Course code','Course / assessment','Mark','Weight','Semester','Date','Classification','GPA points'].map(q).join(','),...rows.map(x=>[x.code,x.name,x.grade,x.weight,x.term,x.date,gradeClass(Number(x.grade)),gradePoints(Number(x.grade))].map(q).join(','))];const blob=new Blob(['\uFEFF'+lines.join('\r\n')],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='orbit-academic-transcript.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+function exportTranscript(){const rows=active().academics;if(!rows.length){notify('No academic records to export.');return;}const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const lines=[['Course code','Course / assessment','Mark','Weight','Semester','Date','Classification','GPA points'].map(q).join(','),...rows.map(x=>[x.code,x.name,x.grade,x.weight,x.term,x.date,gradeClass(Number(x.grade)),gradePoints(Number(x.grade))].map(q).join(','))];const blob=new Blob(['\uFEFF'+lines.join('\r\n')],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='DO YOUR BIT-academic-transcript.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 $('transcriptExport').onclick=exportTranscript;
 function renderAcademics(){
  const a=active(),list=a.academics;
@@ -1515,14 +1517,14 @@ function exportBudgetExcel(){
   const total=rows.reduce((sum,r)=>sum+r['Amount (RWF)'],0);
   XLSX.utils.sheet_add_aoa(ws,[[],['TOTAL',total]],{origin:-1});
   const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Budget');
-  XLSX.writeFile(wb,'orbit-budget.xlsx');
+  XLSX.writeFile(wb,'DO YOUR BIT-budget.xlsx');
   notify('Budget exported as an Excel workbook.');
  }else{
   const headers=Object.keys(rows[0]);
   const csv=[headers,...rows.map(r=>headers.map(h=>r[h])),['TOTAL',rows.reduce((sum,r)=>sum+r['Amount (RWF)'],0)]]
    .map(row=>row.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');
   const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});
-  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='orbit-budget.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='DO YOUR BIT-budget.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
  }
 }
 function importBudgetSpreadsheet(file){
@@ -1554,13 +1556,13 @@ function importBudgetSpreadsheet(file){
  };
  if(file.name.toLowerCase().endsWith('.xlsx')||file.name.toLowerCase().endsWith('.xls'))reader.readAsArrayBuffer(file);else reader.readAsText(file);
 }
-function exportBackup(){const blob=new Blob([JSON.stringify({app:'ORBIT',version:2,account:active()},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='orbit-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);notify('Backup exported.')}
+function exportBackup(){const blob=new Blob([JSON.stringify({app:'DO YOUR BIT',version:2,account:active()},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='DO YOUR BIT-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);notify('Backup exported.')}
 function importBackupFile(file){
  if(!file)return;
  const reader=new FileReader();
  reader.onload=()=>{try{
   const data=JSON.parse(reader.result),imported=data&&data.account?data.account:data;
-  if(!imported||!Array.isArray(imported.tasks))throw new Error('Not a valid ORBIT backup.');
+  if(!imported||!Array.isArray(imported.tasks))throw new Error('Not a valid DO YOUR BIT backup.');
   if(!confirm('Replace current workspace data with this backup?'))return;
   accounts[currentEmail]=normalizeWorkspace({...imported,profile:{...imported.profile,email:currentEmail}},currentEmail);
   saveActive();renderAll();notify('Backup imported successfully.');
@@ -1598,12 +1600,12 @@ async function enableReminders(){
 }
 function checkDueReminders(){
  if(!('Notification' in window)||Notification.permission!=='granted'||!active())return;
- const today=localIsoDate(),key='orbit_reminded_'+currentUser.id+'_'+today;
+ const today=localIsoDate(),key='DO YOUR BIT_reminded_'+currentUser.id+'_'+today;
  if(sessionStorage.getItem(key))return;
  const dueTasks=active().tasks.filter(t=>!t.done&&t.due&&t.due<=today).length;
  const openHabits=active().habits.filter(h=>!isHabitDone(h,today)).length;
  if(dueTasks||openHabits){
-  new Notification('ORBIT Daily Reminder',{body:`You have ${openHabits} habit(s) and ${dueTasks} task(s) scheduled today.`});
+  new Notification('DO YOUR BIT Daily Reminder',{body:`You have ${openHabits} habit(s) and ${dueTasks} task(s) scheduled today.`});
   sessionStorage.setItem(key,'1');
  }
 }
