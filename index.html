@@ -40,6 +40,9 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .btn.secondary{background:#202644;box-shadow:none;border:1px solid var(--line)}
 .btn.danger{background:#5c1d33;box-shadow:none;border:1px solid #8a2c4d;color:#ffdce5}
 .btn.full{width:100%;margin-top:12px}
+.btn.google-btn{display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:#202124;border:1px solid #dadce0;box-shadow:none;margin-top:12px}
+.btn.google-btn:hover{background:#f8faff}
+.google-mark{font-weight:900;font-size:17px;color:#4285f4;font-family:Arial,sans-serif}
 .btn.sm{padding:7px 12px;font-size:12px;border-radius:10px}
 .switch-auth{text-align:center;margin-top:18px;color:var(--muted)}
 .switch-auth button{background:none;border:0;color:#c59aff;font-weight:700}
@@ -237,6 +240,7 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
         <button class="btn full" type="submit" data-i18n="signInBtn">Sign in to DO YOUR BIT</button>
         <div class="switch-auth"><button id="forgotPassword" type="button" data-i18n="forgotPw">Forgot password?</button></div>
       </form>
+      <button id="googleSignIn" class="btn full google-btn" type="button"><span class="google-mark" aria-hidden="true">G</span><span data-i18n="googleSignIn">Continue with Google</span></button>
       <div class="switch-auth"><span data-i18n="newHere">New here?</span> <button id="showSignup" type="button" data-i18n="createAccLink">Create an account</button></div>
     </div>
     <div id="signupPane" class="hidden">
@@ -631,7 +635,7 @@ const defaultAvatar = 'https://i.pravatar.cc/120?img=12';
 /* ENGLISH & KINYARWANDA DICTIONARY */
 const I18N = {
  en: {
-  welcomeBack:'Welcome back',signInSub:'Sign in to open your personal & habit workspace.',emailLabel:'EMAIL ADDRESS',passwordLabel:'PASSWORD',signInBtn:'Sign in to DO YOUR BIT',forgotPw:'Forgot password?',newHere:'New here?',createAccLink:'Create an account',
+  welcomeBack:'Welcome back',signInSub:'Sign in to open your personal & habit workspace.',emailLabel:'EMAIL ADDRESS',passwordLabel:'PASSWORD',signInBtn:'Sign in to DO YOUR BIT',forgotPw:'Forgot password?',newHere:'New here?',createAccLink:'Create an account',googleSignIn:'Continue with Google',
   createAccTitle:'Create your account',createAccSub:'Create your secure account and sync your workspace across devices.',profilePic:'Profile picture',fullNameLabel:'FULL NAME',courseLabel:'COURSE / ROLE',yearLabel:'YEAR / LEVEL',createPwLabel:'CREATE PASSWORD (8+ CHARACTERS)',confirmPwLabel:'CONFIRM PASSWORD',createWorkspaceBtn:'Create my workspace',alreadyHave:'Already have an account?',signInLink:'Sign in',
   grpDaily:'Daily Flow',grpWorkspace:'Workspace',grpInsights:'Insights & Security',
   navOverview:'Overview',navHabits:'My Habits',navRoutines:'Routines',navTasks:'My Tasks',navBudget:'Budget',navAcademics:'Academics',navGoals:'Goals',navCategories:'Categories',navStatistics:'Statistics',navSettings:'Settings & PIN',signOut:'Sign out',
@@ -649,7 +653,7 @@ const I18N = {
   profileTitle:'My profile & settings',profileSub:'Click your photo to view or change it, update your password, or manage security.',securityTitle:'🔐 Password & Account Security',securitySub:'Change your login password or permanently delete your account',newPwLbl:'New Password (8+ chars)',confirmNewPwLbl:'Confirm New Password',updatePwBtn:'Update Password',dangerZoneTitle:'Delete Account & Workspace',dangerZoneSub:'Permanently erase all cloud records and close your session.',deleteAccBtn:'Delete Account',editProfileTitle:'Edit profile',saveProfileBtn:'Save profile'
  },
  rw: {
-  welcomeBack:'Murakaza neza',signInSub:'Injira mu rubuga rwawe rwo gukurikirana imigenzo n’imirimo.',emailLabel:'IMEYILI YAWE',passwordLabel:'IJAMBO RY’IBANGA',signInBtn:'Injira muri DO YOUR BIT',forgotPw:'Wibagiwe ijambo ry’ibanga?',newHere:'Uri mushya hano?',createAccLink:'Fungura konti',
+  welcomeBack:'Murakaza neza',signInSub:'Injira mu rubuga rwawe rwo gukurikirana imigenzo n’imirimo.',emailLabel:'IMEYILI YAWE',passwordLabel:'IJAMBO RY’IBANGA',signInBtn:'Injira muri DO YOUR BIT',forgotPw:'Wibagiwe ijambo ry’ibanga?',newHere:'Uri mushya hano?',createAccLink:'Fungura konti',googleSignIn:'Komeza ukoresheje Google',
   createAccTitle:'Fungura konti yawe',createAccSub:'Fungura konti irinzwe kandi ibika amakuru yawe kuri interineti.',profilePic:'Ifoto yawe',fullNameLabel:'AMAZINA YOSE',courseLabel:'ISHAMI / UMURIMO',yearLabel:'UMWAKA / URWEGO',createPwLabel:'SHYIRAHO IJAMBO RY’IBANGA (INYUGUTI 8+)',confirmPwLabel:'EMEZA IJAMBO RY’IBANGA',createWorkspaceBtn:'Fungura urubuga rwanjye',alreadyHave:'Usanganywe konti?',signInLink:'Injira',
   grpDaily:'Ibikorwa bya buri munsi',grpWorkspace:'Urubuga rwanjye',grpInsights:'Imibare n’Umutekano',
   navOverview:'Incamake',navHabits:'Imigenzo yanjye',navRoutines:'Gahunda',navTasks:'Imirimo yanjye',navBudget:'Ingengo y’imari',navAcademics:'Amasomo',navGoals:'Intego',navCategories:'Ibyiciro',navStatistics:'Imibare (Histogram)',navSettings:'Umwirondoro & PIN',signOut:'Sohoka',
@@ -849,6 +853,19 @@ $('signupForm').addEventListener('submit',async e=>{
    notify('Confirmation link sent! Check your email to activate your account.');showAuth('login');
   }
  }catch(err){notify(err.message||'Could not create your account.')}finally{submit.disabled=false;submit.textContent=original}
+});
+
+$('googleSignIn').addEventListener('click',async()=>{
+ const button=$('googleSignIn');
+ try{
+  if(!supabaseClient)throw new Error('Supabase library did not load.');
+  button.disabled=true;
+  const {error}=await supabaseClient.auth.signInWithOAuth({
+   provider:'google',
+   options:{redirectTo:APP_REDIRECT_URL,queryParams:{prompt:'select_account'}}
+  });
+  if(error)throw error;
+ }catch(err){notify(err.message||'Could not start Google sign-in.');button.disabled=false;}
 });
 
 $('loginForm').addEventListener('submit',async e=>{
