@@ -641,7 +641,7 @@ const I18N = {
   habitsTitle:'Habits Today',habitsSub:'Build unstoppable daily streaks with single-tap or multi-step habits.',starterIdeasBtn:'💡 Starter ideas',filterAll:'☰ All',filterOpen:'○ Open',filterDone:'✓ Finished',createHabitTitle:'Create a Habit',habitNameLbl:'Habit name',categoryLbl:'Category',dailyTargetLbl:'Daily target count',reminderTimeLbl:'Reminder time',scheduleLbl:'Schedule',addHabitBtn:'+ Add Habit',
   routinesTitle:'Active Routines',routinesSub:'Chain habits together into morning, study, or evening flows.',manageCatsBtn:'Manage Categories',yourRoutines:'Your Routines',starterRoutinesTitle:'Ready-Made Starter Ideas',starterRoutinesSub:'One-click routines to jumpstart your day',createRoutineTitle:'Create My Own Routine',routineTitleLbl:'Routine title',routineScheduleLbl:'Time of day / schedule',routineStepsLbl:'Steps (one per line)',createRoutineBtn:'+ Create Routine',
   catsTitle:'Categories',catsSub:'Create custom categories — they automatically appear in Habits AND Budget Expenses.',allCatsTitle:'All Categories',newCatTitle:'New Category',catNameLbl:'Category name',catIconLbl:'Icon / Emoji',catColorLbl:'Badge Color',addCatBtn:'+ Add Category',
-  statsTitle:'Habit & Routine Statistics',statsSub:'Histogram distribution of daily completions, streaks, and perfect days.',statCompRate:'Completion rate',statLongest:'Longest running streak',statPerfect:'Perfect days',statPerfectSub:'100% habits completed',statRoutines:'Active routines',statRoutinesSub:'Routines completed total',histoTitle:'Daily Completion Histogram',histoSub:'Frequency of completed habits per day across the selected window',indivHistoTitle:'Individual Habit Histograms',indivHistoSub:'Daily progress distribution & best streak per habit',
+  statsTitle:'Habit & Routine Statistics',statsSub:'Histogram distribution of daily completions, streaks, and perfect days.',statCompRate:'Completion rate',statLongest:'Longest running streak',statPerfect:'Perfect days',statPerfectSub:'100% of scheduled habits completed',statRoutines:'Active routines',statRoutinesSub:'Routines completed total',histoTitle:'Daily Completion Histogram',histoSub:'Frequency of completed habits per day across the selected window',indivHistoTitle:'Individual Habit Histograms',indivHistoSub:'Daily progress distribution & best streak per habit',
   tasksTitle:'My tasks',tasksSub:'Plan your day and keep moving forward.',taskListTitle:'Task list',addTaskTitle:'Add a task',addTaskBtn:'Add task',
   budgetTitle:'Budget planner',budgetSub:'Keep track of planned and paid expenses in RWF using your workspace categories.',expensesTitle:'Expenses',newExpenseTitle:'New expense',addExpenseBtn:'Add expense',
   acadTitle:'Academics',acadSub:'Record CATs, assignments and examination results.',acadRecordsTitle:'Academic records',addResultTitle:'Add a result',saveResultBtn:'Save result',
@@ -774,7 +774,7 @@ function normalizeWorkspace(data,email){
   academics:Array.isArray(d.academics)?d.academics:[],
   goals:Array.isArray(d.goals)?d.goals:[],
   categories:cats,
-  habits:Array.isArray(d.habits)?d.habits.map(h=>({...h,logs:h.logs&&typeof h.logs==='object'?h.logs:{},target:Math.max(1,Number(h.target)||1)})):[],
+  habits:Array.isArray(d.habits)?d.habits.map(h=>({...h,freq:['daily','weekdays','weekends'].includes(h.freq)?h.freq:'daily',logs:h.logs&&typeof h.logs==='object'?h.logs:{},target:Math.max(1,Number(h.target)||1)})):[],
   routines:Array.isArray(d.routines)?d.routines.map(r=>({...r,steps:Array.isArray(r.steps)?r.steps:[],checkedSteps:Array.isArray(r.checkedSteps)?r.checkedSteps:[],completedCount:Number(r.completedCount)||0})):[],
   createdAt:d.createdAt||new Date().toISOString()
  };
@@ -802,7 +802,7 @@ function saveActive(){
  cloudSaveQueue=cloudSaveQueue.then(async()=>{
   const {error}=await supabaseClient.from('do_your_bit_workspaces').upsert({user_id:userId,data:snapshot,updated_at:new Date().toISOString()},{onConflict:'user_id'});
   if(error)throw error;
- }).catch(err=>{notify('Cloud save failed: '+(err.message||'Check your connection.'));});
+ }).catch(err=>{console.error('DO YOUR BIT cloud save failed:',err);notify('Cloud save failed. Your latest changes may not be in the cloud. Check your connection and try again.');});
  return cloudSaveQueue;
 }
 
@@ -992,42 +992,44 @@ $('deleteAccountBtn').onclick = async () => {
 
 /* ==================== HABITS ==================== */
 function getHabitCount(h, dateStr){return Math.max(0, Number(h.logs?.[dateStr]||0))}
+function isHabitScheduled(h, dateStr){
+ const freq=['daily','weekdays','weekends'].includes(h?.freq)?h.freq:'daily';
+ if(freq==='daily') return true;
+ const day=new Date(dateStr+'T12:00:00').getDay();
+ return freq==='weekdays' ? day>=1&&day<=5 : day===0||day===6;
+}
 function isHabitDone(h, dateStr){return getHabitCount(h, dateStr) >= (Number(h.target)||1)}
 function calcHabitStreak(h){
- let streak = 0;
- let cursor = localIsoDate();
- if(!isHabitDone(h, cursor)) cursor = addDays(cursor, -1);
- while(isHabitDone(h, cursor)){
-  streak++;
-  cursor = addDays(cursor, -1);
-  if(streak > 3650) break;
+ let streak=0, cursor=localIsoDate();
+ if(!isHabitScheduled(h,cursor) || !isHabitDone(h,cursor)) cursor=addDays(cursor,-1);
+ for(let guard=0;guard<3650;guard++){
+  if(!isHabitScheduled(h,cursor)) {cursor=addDays(cursor,-1);continue;}
+  if(!isHabitDone(h,cursor)) break;
+  streak++;cursor=addDays(cursor,-1);
  }
  return streak;
 }
 function calcBestStreak(h){
- const dates = Object.keys(h.logs||{}).filter(d=>isHabitDone(h,d)).sort();
- if(!dates.length) return 0;
- let best = 1, cur = 1;
+ const dates=Object.keys(h.logs||{}).filter(d=>isHabitScheduled(h,d)&&isHabitDone(h,d)).sort();
+ if(!dates.length)return 0;
+ let best=1,cur=1,prev=dates[0];
  for(let i=1;i<dates.length;i++){
-  if(addDays(dates[i-1],1)===dates[i]){cur++;best=Math.max(best,cur);}
-  else cur=1;
+  let probe=addDays(prev,1),guard=0;
+  while(!isHabitScheduled(h,probe)&&guard++<7)probe=addDays(probe,1);
+  if(probe===dates[i])cur++;else cur=1;
+  best=Math.max(best,cur);prev=dates[i];
  }
  return best;
 }
 function stepHabit(habitId, dateStr, delta){
- const h = active().habits.find(x=>x.id===habitId);
- if(!h) return;
- if(!h.logs) h.logs = {};
- const target = Number(h.target)||1;
- const current = getHabitCount(h, dateStr);
- if(delta === 'toggle'){
-  h.logs[dateStr] = current >= target ? 0 : target;
- } else {
-  h.logs[dateStr] = Math.max(0, Math.min(target, current + delta));
- }
- saveActive();
- renderAll();
- if(isHabitDone(h, dateStr)) notify(`${h.name} 🔥`);
+ const h=active().habits.find(x=>x.id===habitId);
+ if(!h)return;
+ if(!isHabitScheduled(h,dateStr)){notify('This habit is not scheduled for the selected day.');return;}
+ if(!h.logs)h.logs={};
+ const target=Number(h.target)||1,current=getHabitCount(h,dateStr);
+ h.logs[dateStr]=delta==='toggle'?(current>=target?0:target):Math.max(0,Math.min(target,current+delta));
+ saveActive();renderAll();
+ if(isHabitDone(h,dateStr))notify(`${h.name} 🔥`);
 }
 
 function renderHabits(){
@@ -1043,7 +1045,7 @@ function renderHabits(){
  $('habitDateStrip').innerHTML = stripDates.map(dtStr=>{
   const [,,dd] = dtStr.split('-').map(Number);
   const dtObj = new Date(dtStr + 'T12:00:00');
-  const hasDone = a.habits.some(h=>isHabitDone(h, dtStr));
+  const hasDone = a.habits.some(h=>isHabitScheduled(h,dtStr)&&isHabitDone(h, dtStr));
   return `<button type="button" class="day-card ${dtStr===selectedHabitDate?'active':''} ${hasDone?'has-done':''}" data-hdate="${dtStr}">
    <span class="m">${dtObj.toLocaleDateString(undefined,{month:'short'})}</span>
    <span class="d">${dd}</span>
@@ -1054,7 +1056,7 @@ function renderHabits(){
 
  $('habitDateStrip').querySelectorAll('[data-hdate]').forEach(btn=>btn.onclick=()=>{selectedHabitDate=btn.dataset.hdate;renderHabits();});
 
- let list = [...a.habits];
+ let list = a.habits.filter(h=>isHabitScheduled(h,selectedHabitDate));
  if(habitSortAZ) list.sort((x,y)=>x.name.localeCompare(y.name));
  const doneTotal = list.filter(h=>isHabitDone(h, selectedHabitDate)).length;
  $('habitSummaryPill').textContent = `${doneTotal} / ${list.length} DONE`;
@@ -1077,7 +1079,7 @@ function renderHabits(){
    <div class="cat-badge" style="background:${esc(cat.color)}">${esc(cat.icon)}</div>
    <div class="grow">
     <strong style="${done?'text-decoration:line-through;opacity:.75':''}">${esc(h.name)}</strong>
-    <small>${esc(cat.name)} · ${target>1?`${count} of ${target}`:'Once a day'}${h.time?' · ⏰ '+esc(h.time):''}</small>
+    <small>${esc(cat.name)} · ${target>1?`${count} of ${target}`:'Once per scheduled day'} · ${h.freq==='weekdays'?'Weekdays':h.freq==='weekends'?'Weekends':'Every day'}${h.time?' · ⏰ '+esc(h.time):''}</small>
    </div>
    ${target>1?`<div class="step-controls"><button type="button" class="step-btn" data-hdec="${esc(h.id)}">−</button><button type="button" class="step-btn" data-hinc="${esc(h.id)}">+1</button></div>`:''}
    ${streak>0?`<span class="streak-pill" title="Current streak">🔥 ${streak}</span>`:''}
@@ -1135,7 +1137,7 @@ function renderRoutines(){
    <div class="routine-head">
     <div><strong>${esc(r.title)}</strong><small class="muted">${esc(r.time||'Flexible schedule')} · ${checkedSet.size}/${r.steps.length} steps (${pct}%) · Completed ${r.completedCount||0}×</small></div>
     <div class="import-controls">
-     <button type="button" class="btn sm ${allDone?'':'secondary'}" data-rcomplete="${esc(r.id)}">${allDone?'✓ Finish & Reset':'Complete Routine'}</button>
+     <button type="button" class="btn sm ${allDone?'':'secondary'}" ${allDone?'':'disabled'} data-rcomplete="${esc(r.id)}">${allDone?'✓ Finish & Reset':'Complete all steps first'}</button>
      <button type="button" class="icon-btn" data-rdel="${esc(r.id)}" title="Delete routine">×</button>
     </div>
    </div>
@@ -1159,6 +1161,7 @@ function renderRoutines(){
  $('routineList').querySelectorAll('[data-rcomplete]').forEach(btn=>btn.onclick=()=>{
   const r = a.routines.find(x=>x.id===btn.dataset.rcomplete);
   if(!r) return;
+  if(!r.steps.length||!r.steps.every((_,idx)=>(r.checkedSteps||[]).includes(idx))){notify('Complete every routine step before finishing.');return;}
   r.completedCount = (Number(r.completedCount)||0) + 1;
   r.checkedSteps = [];
   saveActive();renderAll();notify(`Routine "${r.title}" completed! 🎉`);
@@ -1256,13 +1259,11 @@ function renderStatistics(){
 
  let possible = 0, completed = 0, perfectDays = 0;
  const dailyCounts = windowDates.map(dt=>{
-  const doneOnDay = a.habits.filter(h=>isHabitDone(h, dt)).length;
-  if(a.habits.length){
-   possible += a.habits.length;
-   completed += doneOnDay;
-   if(doneOnDay === a.habits.length) perfectDays++;
-  }
-  return {date:dt, count:doneOnDay};
+  const scheduled=a.habits.filter(h=>isHabitScheduled(h,dt));
+  const doneOnDay=scheduled.filter(h=>isHabitDone(h,dt)).length;
+  possible+=scheduled.length;completed+=doneOnDay;
+  if(scheduled.length>0&&doneOnDay===scheduled.length)perfectDays++;
+  return {date:dt,count:doneOnDay,scheduled:scheduled.length};
  });
 
  const rate = possible ? Math.round((completed / possible) * 100) : 0;
@@ -1288,7 +1289,7 @@ function renderStatistics(){
   const label = statWindowDays <= 7
    ? new Date(item.date + 'T12:00:00').toLocaleDateString(undefined,{weekday:'short'})
    : `${dd}/${mm}`;
-  return `<div class="histo-col" title="${item.date}: ${item.count}/${a.habits.length} habits completed">
+  return `<div class="histo-col" title="${item.date}: ${item.count}/${item.scheduled} scheduled habits completed">
    <span class="histo-val">${item.count>0?item.count:''}</span>
    <div class="histo-bar ${item.count===0?'zero':''}" style="height:${pctHeight}%"></div>
    <span class="histo-lbl">${label}</span>
@@ -1310,10 +1311,11 @@ function renderStatistics(){
    <div class="mini-bars">
     ${last14Dates.map(dt=>{
      const cnt = getHabitCount(h, dt);
+     const scheduled=isHabitScheduled(h,dt);
      const ratio = Math.min(1, cnt / target);
      const hit = cnt >= target;
      const [,mm,dd] = dt.split('-');
-     return `<div class="mini-bar-col" title="${dt}: ${cnt}/${target}"><div class="mini-bar-fill ${cnt>0?'hit':''}" style="height:${cnt>0?Math.max(25,Math.round(ratio*100))+'%':'14%'};opacity:${hit?1:0.55}"></div><span class="bar-label">${dd}</span></div>`;
+     return `<div class="mini-bar-col" title="${dt}: ${scheduled?cnt+'/'+target:'Not scheduled'}"><div class="mini-bar-fill ${cnt>0?'hit':''}" style="height:${!scheduled?'0%':cnt>0?Math.max(25,Math.round(ratio*100))+'%':'14%'};opacity:${!scheduled?0.12:(hit?1:0.55)}"></div><span class="bar-label">${dd}</span></div>`;
     }).join('')}
    </div>
   </div>`;
@@ -1600,13 +1602,14 @@ async function enableReminders(){
 }
 function checkDueReminders(){
  if(!('Notification' in window)||Notification.permission!=='granted'||!active())return;
- const today=localIsoDate(),key='DO YOUR BIT_reminded_'+currentUser.id+'_'+today;
- if(sessionStorage.getItem(key))return;
+ const today=localIsoDate(),now=new Date(),clock=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
  const dueTasks=active().tasks.filter(t=>!t.done&&t.due&&t.due<=today).length;
- const openHabits=active().habits.filter(h=>!isHabitDone(h,today)).length;
- if(dueTasks||openHabits){
-  new Notification('DO YOUR BIT Daily Reminder',{body:`You have ${openHabits} habit(s) and ${dueTasks} task(s) scheduled today.`});
-  sessionStorage.setItem(key,'1');
+ const dueHabits=active().habits.filter(h=>isHabitScheduled(h,today)&&!isHabitDone(h,today)&&(!h.time||h.time<=clock));
+ const openHabits=dueHabits.length;
+ const dueKey='DO YOUR BIT_reminded_'+currentUser.id+'_'+today+'_'+dueHabits.map(h=>h.id).sort().join(',')+'_'+dueTasks;
+ if((dueTasks||openHabits)&&!sessionStorage.getItem(dueKey)){
+  new Notification('DO YOUR BIT Reminder',{body:`${openHabits} habit(s) and ${dueTasks} task(s) need your attention.`});
+  sessionStorage.setItem(dueKey,'1');
  }
 }
 
