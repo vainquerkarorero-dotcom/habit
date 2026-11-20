@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#090b18">
 <meta name="description" content="DO YOUR BIT — your personal destiny & habit workspace">
-<link rel="icon" href="favico.png">
+<link rel="icon" type="image/png" sizes="460x460" href="favico.png">
 <title>DO YOUR BIT — Personal & Habit Workspace</title>
 <style>
 :root{--bg:#090b18;--panel:#101329;--panel2:#151a35;--card:#11162d;--line:#252b4b;--text:#f5f6ff;--muted:#9299b8;--purple:#873cff;--purple2:#b36cff;--cyan:#35d9d0;--green:#36d98a;--amber:#ffb547;--red:#ff647c;--shadow:0 18px 55px #0007}
@@ -22,8 +22,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .auth-wrap{min-height:100vh;display:grid;place-items:center;padding:22px}
 .auth-card{width:min(100%,480px);padding:28px;border:1px solid #34345f;border-radius:24px;background:linear-gradient(145deg,#151831,#0d1022);box-shadow:var(--shadow)}
 .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.12em}
-.brand-mark{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--purple),#4c1ba8);font-size:22px;position:relative;overflow:hidden}
-.brand-mark:after{content:"✦";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:25px;text-shadow:0 2px 8px #241044}
+.brand-mark{width:42px;height:42px;border-radius:12px;display:block;object-fit:contain;flex-shrink:0}
 .auth-card h1{font-size:27px;margin:24px 0 5px}
 .muted{color:var(--muted)}
 .auth-card p{margin:0 0 20px;color:var(--muted)}
@@ -63,11 +62,18 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .user-mini small{color:var(--muted);font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px;display:block}
 
 .main{min-width:0;padding:0 26px 40px}
-.topbar{height:72px;display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:1px solid #202642;margin-bottom:20px}
+.topbar{height:72px;display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:1px solid #202642;margin-bottom:20px;position:sticky;top:0;z-index:30;background:var(--bg);background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(14px)}
 .topbar h2{font-size:18px;margin:0}
 .top-actions{display:flex;align-items:center;gap:8px}
 .icon-btn{min-width:38px;height:38px;padding:0 10px;border-radius:12px;border:1px solid var(--line);background:#151a32;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0}
 .icon-btn:hover{border-color:var(--purple2)}
+.backup-menu{position:relative;flex-shrink:0}
+.backup-menu summary{list-style:none;user-select:none}
+.backup-menu summary::-webkit-details-marker{display:none}
+.backup-menu-trigger{min-width:112px;padding:0 12px;gap:8px}
+.backup-menu-panel{position:absolute;right:0;top:calc(100% + 8px);min-width:160px;padding:6px;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);display:grid;gap:4px;z-index:60}
+.backup-menu-panel button{width:100%;text-align:left;padding:10px 12px;border:0;border-radius:8px;background:transparent;color:var(--text);font-weight:650}
+.backup-menu-panel button:hover{background:#873cff22}
 .lang-toggle{background:linear-gradient(135deg,#251b4d,#161b38);border-color:#5b3896;color:#d6b8ff;letter-spacing:.04em}
 .avatar-btn{padding:0;border:2px solid #7740c8;border-radius:50%;width:38px;height:38px;overflow:hidden;background:transparent;flex-shrink:0}
 .avatar-btn img{width:100%;height:100%;object-fit:cover;display:block}
@@ -196,6 +202,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .pin-key:hover{border-color:var(--purple2)}
 
 .mobile-logout{display:none}
+.mobile-menu-toggle{display:none}
 .footer-brand{color:var(--muted);text-align:center;font-size:11px;padding:30px 0 5px;letter-spacing:.02em}
 .import-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 #backupImport{display:none}
@@ -220,7 +227,7 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
 
 @media(max-width:1100px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:1000px){.app{grid-template-columns:76px minmax(0,1fr)}.sidebar{padding:18px 9px}.side-brand{padding:0 8px}.brand-text,.nav-text,.user-mini .user-info,.side-group-label{display:none}.nav-btn{justify-content:center;padding:11px}.user-mini{justify-content:center;padding:8px}.user-mini img{width:34px;height:34px}.section-grid{grid-template-columns:1fr}}
-@media(max-width:720px){.app{display:block}.sidebar{position:fixed;z-index:20;left:0;right:0;bottom:0;top:auto;height:auto;padding:6px 6px;border-right:0;border-top:1px solid var(--line);display:block;background:#0c1022f8;overflow-x:auto}.side-brand,.side-bottom,.side-group-label{display:none}.mobile-logout{display:inline-flex}.side-nav{display:flex;justify-content:flex-start;gap:4px;min-width:max-content}.nav-btn{display:grid;gap:1px;padding:6px 10px;font-size:9px;justify-items:center;min-width:60px}.nav-btn .ico{font-size:16px}.nav-text{display:block}.main{padding:0 13px 95px}.topbar{height:62px;margin-bottom:16px}.topbar h2{font-size:15px}.kpis{gap:8px}.kpi{padding:12px}.kpi strong{font-size:21px}.layout,.section-grid,.profile-layout{grid-template-columns:1fr}.welcome h1{font-size:20px}.panel{padding:14px}.date-strip{gap:4px}.day-card{padding:7px 2px}.day-card .d{font-size:14px}.grid3{grid-template-columns:1fr}}
+@media(max-width:720px){.app{display:block}.sidebar{position:fixed;z-index:40;left:12px;right:12px;bottom:12px;top:auto;height:auto;max-height:78vh;padding:8px;border:1px solid var(--line);border-radius:16px;display:flex;flex-direction:column;gap:7px;background:#0c1022f8;box-shadow:var(--shadow);overflow:visible}.side-brand,.side-bottom,.side-group-label{display:none}.mobile-logout{display:inline-flex}.mobile-menu-toggle{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:10px 13px;border:1px solid var(--line);border-radius:11px;background:#151a32;color:var(--text);font-weight:750;text-align:left}.mobile-menu-symbol{font-size:17px}.mobile-menu-chevron{margin-left:auto}.side-nav{display:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;min-width:0;overflow-y:auto;max-height:58vh;padding-top:2px}.sidebar.mobile-expanded .side-nav{display:grid}.nav-btn{display:grid;gap:2px;padding:8px 4px;font-size:10px;justify-items:center;min-width:0;border:1px solid transparent}.nav-btn .ico{font-size:16px}.nav-text{display:block;text-align:center}.main{padding:0 13px 105px}.topbar{height:62px;margin-bottom:16px}.topbar h2{font-size:15px}.top-actions{gap:5px}.kpis{gap:8px}.kpi{padding:12px}.kpi strong{font-size:21px}.layout,.section-grid,.profile-layout{grid-template-columns:1fr}.welcome h1{font-size:20px}.panel{padding:14px}.date-strip{gap:4px}.day-card{padding:7px 2px}.day-card .d{font-size:14px}.grid3{grid-template-columns:1fr}.backup-menu-trigger{min-width:42px;font-size:0}.backup-menu-trigger .backup-menu-label{display:none}.backup-menu-panel{right:0;top:auto;bottom:calc(100% + 8px)}}
 @media(max-width:420px){.kpis{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}}
 </style>
 </head>
@@ -229,7 +236,7 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
 <div id="authView" class="auth-wrap">
   <div class="auth-card">
     <div style="display:flex;justify-content:space-between;align-items:center">
-     <div class="brand"><div class="brand-mark">O</div><span>DO YOUR BIT <span style="color:#a77aff">WORKSPACE</span></span></div>
+     <div class="brand"><img class="brand-mark" src="favico.png" alt="DO YOUR BIT logo"><span>DO YOUR BIT <span style="color:#a77aff">WORKSPACE</span></span></div>
      <button class="icon-btn lang-toggle" id="authLangBtn" type="button" title="Switch language (English / Kinyarwanda)">EN / RW</button>
     </div>
     <div id="loginPane">
@@ -263,8 +270,9 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
 <!-- MAIN APP VIEW -->
 <div id="appView" class="app hidden">
  <aside class="sidebar">
-  <div class="side-brand"><div class="brand"><div class="brand-mark">O</div><span class="brand-text">DO YOUR BIT</span></div></div>
-  <nav class="side-nav" aria-label="Primary navigation">
+  <div class="side-brand"><div class="brand"><img class="brand-mark" src="favico.png" alt="DO YOUR BIT logo"><span class="brand-text">DO YOUR BIT</span></div></div>
+  <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="primaryNav"><span class="mobile-menu-symbol" aria-hidden="true">☰</span><span>Menu</span><span class="mobile-menu-chevron" aria-hidden="true">⌃</span></button>
+  <nav class="side-nav" id="primaryNav" aria-label="Primary navigation">
    <div class="side-group-label" data-i18n="grpDaily">Daily Flow</div>
    <button class="nav-btn active" data-section="overview" type="button"><span class="ico">▦</span><span class="nav-text" data-i18n="navOverview">Overview</span></button>
    <button class="nav-btn" data-section="habits" type="button"><span class="ico">★</span><span class="nav-text" data-i18n="navHabits">My Habits</span></button>
@@ -291,8 +299,13 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
    <div class="top-actions import-controls">
     <button class="icon-btn hidden" id="lockNowBtn" title="Lock workspace with PIN" aria-label="Lock workspace">🔒</button>
     <button class="icon-btn" id="guideBtn" title="How DO YOUR BIT Habits works" aria-label="How DO YOUR BIT works">?</button>
-    <button class="icon-btn" id="exportBtn" title="Export backup" aria-label="Export backup">⇩</button>
-    <button class="icon-btn" id="importBtn" title="Import backup" aria-label="Import backup">⇧</button>
+    <details class="backup-menu" id="backupMenu">
+     <summary class="icon-btn backup-menu-trigger" aria-label="Import or export backup" title="Import or export backup">⇅ <span class="backup-menu-label">Backup</span> ▾</summary>
+     <div class="backup-menu-panel" role="menu" aria-label="Backup options">
+      <button id="importBtn" type="button" role="menuitem">⇧ Import backup</button>
+      <button id="exportBtn" type="button" role="menuitem">⇩ Export backup</button>
+     </div>
+    </details>
     <button class="icon-btn lang-toggle" id="langBtn" title="Switch language (English / Kinyarwanda)" aria-label="Switch language">EN</button>
     <input id="backupImport" type="file" accept="application/json,.json">
     <button class="icon-btn" id="themeBtn" title="Switch theme" aria-label="Switch theme">☼</button>
@@ -599,7 +612,7 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
 <!-- PIN LOCK OVERLAY -->
 <div id="pinLockModal" class="modal-backdrop hidden" style="z-index:60" role="dialog" aria-modal="true" aria-label="PIN Lock">
  <div class="modal-card" style="text-align:center;max-width:360px">
-  <div class="brand" style="justify-content:center;margin-bottom:10px"><div class="brand-mark">O</div><span>DO YOUR BIT LOCKED</span></div>
+  <div class="brand" style="justify-content:center;margin-bottom:10px"><img class="brand-mark" src="favico.png" alt="DO YOUR BIT logo"><span>DO YOUR BIT LOCKED</span></div>
   <p class="muted" style="font-size:12px">Enter your 4-digit security PIN to unlock your workspace.</p>
   <div class="pin-dots" id="pinDots"><span class="pin-dot"></span><span class="pin-dot"></span><span class="pin-dot"></span><span class="pin-dot"></span></div>
   <div class="pin-pad" id="pinPad">
@@ -920,6 +933,24 @@ function showSection(name){
 }
 document.querySelectorAll('[data-section]').forEach(b=>b.addEventListener('click',()=>showSection(b.dataset.section)));
 document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showSection(b.dataset.go)));
+
+const mobileMenuToggle = $('mobileMenuToggle');
+const mobileSidebar = document.querySelector('.sidebar');
+function closeMobileMenu(){
+ if(!mobileSidebar || !mobileMenuToggle) return;
+ mobileSidebar.classList.remove('mobile-expanded');
+ mobileMenuToggle.setAttribute('aria-expanded','false');
+ mobileMenuToggle.querySelector('.mobile-menu-chevron').textContent='⌃';
+}
+if(mobileMenuToggle){
+ mobileMenuToggle.addEventListener('click',()=>{
+  const expanded=mobileSidebar.classList.toggle('mobile-expanded');
+  mobileMenuToggle.setAttribute('aria-expanded',String(expanded));
+  mobileMenuToggle.querySelector('.mobile-menu-chevron').textContent=expanded?'⌄':'⌃';
+ });
+}
+document.querySelectorAll('.nav-btn[data-section]').forEach(b=>b.addEventListener('click',closeMobileMenu));
+window.addEventListener('resize',()=>{if(window.innerWidth>720)closeMobileMenu()});
 
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function money(n){return Number(n||0).toLocaleString('en-US')+' RWF'}
@@ -1634,8 +1665,9 @@ $('reminderBtn').onclick=enableReminders;
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkDueReminders()});
 setInterval(checkDueReminders,30*60*1000);
 
-$('exportBtn').onclick=exportBackup;$('backupBtn').onclick=exportBackup;
-$('importBtn').onclick=()=>$('backupImport').click();
+$('exportBtn').onclick=()=>{ $('backupMenu').open=false; exportBackup(); };
+$('backupBtn').onclick=exportBackup;
+$('importBtn').onclick=()=>{ $('backupMenu').open=false; $('backupImport').click(); };
 $('backupImport').addEventListener('change',e=>importBackupFile(e.target.files[0]));
 $('legacyImportBtn').onclick=()=>$('legacyImportFile').click();
 $('legacyImportFile').addEventListener('change',e=>importLegacyIndexx(e.target.files[0]));
