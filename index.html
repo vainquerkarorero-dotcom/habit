@@ -253,7 +253,7 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
     <div id="signupPane" class="hidden">
       <h1 data-i18n="createAccTitle">Create your account</h1><p data-i18n="createAccSub">Create your secure account and sync your workspace across devices.</p>
       <form id="signupForm">
-        <div class="avatar-pick"><img id="signupAvatar" class="avatar" alt="Profile preview" src="https://i.pravatar.cc/120?img=12"><div><strong data-i18n="profilePic">Profile picture</strong><div class="muted" style="font-size:11px">Optional · JPG, PNG or WebP</div><input id="signupPhoto" type="file" accept="image/*" style="max-width:210px;margin-top:6px;color:#b9bfd9"></div></div>
+        <div class="avatar-pick"><img id="signupAvatar" class="avatar" alt="Profile preview" src="favico.png"><div><strong data-i18n="profilePic">Profile picture</strong><div class="muted" style="font-size:11px">Optional · JPG, PNG or WebP</div><input id="signupPhoto" type="file" accept="image/*" style="max-width:210px;margin-top:6px;color:#b9bfd9"></div></div>
         <div class="field"><label for="signupName" data-i18n="fullNameLabel">FULL NAME</label><input id="signupName" required maxlength="60" placeholder="Your name"></div>
         <div class="field"><label for="signupEmail" data-i18n="emailLabel">EMAIL ADDRESS</label><input id="signupEmail" type="email" required autocomplete="username" placeholder="you@example.com"></div>
         <div class="grid2"><div class="field"><label for="signupCourse" data-i18n="courseLabel">COURSE / ROLE</label><input id="signupCourse" maxlength="70" placeholder="e.g. Wood Technology"></div><div class="field"><label for="signupYear" data-i18n="yearLabel">YEAR / LEVEL</label><input id="signupYear" maxlength="30" placeholder="e.g. Final Year"></div></div>
@@ -643,7 +643,7 @@ let statWindowDays = 7;
 let pinBuffer = '';
 let currentLang = localStorage.getItem(LANG_KEY) || 'en';
 
-const defaultAvatar = 'https://i.pravatar.cc/120?img=12';
+const defaultAvatar = 'favico.png';
 
 /* ENGLISH & KINYARWANDA DICTIONARY */
 const I18N = {
