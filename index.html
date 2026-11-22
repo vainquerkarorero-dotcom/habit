@@ -202,6 +202,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .pin-key:hover{border-color:var(--purple2)}
 
 .mobile-logout{display:none}
+.mobile-account-label{display:none}
 .mobile-menu-toggle{display:none}
 .footer-brand{color:var(--muted);text-align:center;font-size:11px;padding:30px 0 5px;letter-spacing:.02em}
 .import-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
@@ -225,10 +226,42 @@ body.light .auth-card{border-color:#ddd5f3}
 body.light .field label{color:#626985}
 body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border-color:#d4bdfc}
 
+body.light .sidebar{background:#fffffff5!important}
+body.light .mobile-menu-toggle{background:#f5f2ff;color:#33274f;border-color:#d8cfee}
+body.light .mobile-menu-toggle:hover{background:#eee8ff;border-color:#c4afea}
+body.light .sidebar.mobile-expanded{box-shadow:0 18px 45px #25305a25}
+body.light .nav-btn{color:#626985}
+body.light .nav-btn.active,body.light .nav-btn:hover{color:#48217c;background:#eee7ff;border-color:#d7c5ff}
+
+/* Focused visual refinements */
+.auth-card{position:relative}
+.auth-card>.lang-toggle{position:absolute;top:28px;right:28px}
+.kpi,.panel,.habit-card,.routine-card,.cat-row,.stat-bar-row{transition:transform .18s,border-color .18s,box-shadow .18s}
+.kpi:hover,.panel:hover,.habit-card:hover,.routine-card:hover,.cat-row:hover,.stat-bar-row:hover{border-color:#4e4381;box-shadow:0 14px 34px #0003}
+.list-row,.habit-card,.routine-card,.cat-row,.quick,.day-card,.fpill,.icon-btn,.btn,.nav-btn{touch-action:manipulation}
+.empty{background:linear-gradient(145deg,#151a33,#10142a);color:#aab1cf}
+body.light .empty{background:linear-gradient(145deg,#fafaff,#f2f5fc);color:#737d9a}
+
 @media(max-width:1100px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:1000px){.app{grid-template-columns:76px minmax(0,1fr)}.sidebar{padding:18px 9px}.side-brand{padding:0 8px}.brand-text,.nav-text,.user-mini .user-info,.side-group-label{display:none}.nav-btn{justify-content:center;padding:11px}.user-mini{justify-content:center;padding:8px}.user-mini img{width:34px;height:34px}.section-grid{grid-template-columns:1fr}}
-@media(max-width:720px){.app{display:block}.sidebar{position:fixed;z-index:40;left:12px;right:12px;bottom:12px;top:auto;height:auto;max-height:78vh;padding:8px;border:1px solid var(--line);border-radius:16px;display:flex;flex-direction:column;gap:7px;background:#0c1022f8;box-shadow:var(--shadow);overflow:visible}.side-brand,.side-bottom,.side-group-label{display:none}.mobile-logout{display:inline-flex}.mobile-menu-toggle{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:10px 13px;border:1px solid var(--line);border-radius:11px;background:#151a32;color:var(--text);font-weight:750;text-align:left}.mobile-menu-symbol{font-size:17px}.mobile-menu-chevron{margin-left:auto}.side-nav{display:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;min-width:0;overflow-y:auto;max-height:58vh;padding-top:2px}.sidebar.mobile-expanded .side-nav{display:grid}.nav-btn{display:grid;gap:2px;padding:8px 4px;font-size:10px;justify-items:center;min-width:0;border:1px solid transparent}.nav-btn .ico{font-size:16px}.nav-text{display:block;text-align:center}.main{padding:0 13px 105px}.topbar{height:62px;margin-bottom:16px}.topbar h2{font-size:15px}.top-actions{gap:5px}.kpis{gap:8px}.kpi{padding:12px}.kpi strong{font-size:21px}.layout,.section-grid,.profile-layout{grid-template-columns:1fr}.welcome h1{font-size:20px}.panel{padding:14px}.date-strip{gap:4px}.day-card{padding:7px 2px}.day-card .d{font-size:14px}.grid3{grid-template-columns:1fr}.backup-menu-trigger{min-width:42px;font-size:0}.backup-menu-trigger .backup-menu-label{display:none}.backup-menu-panel{right:0;top:auto;bottom:calc(100% + 8px)}}
-@media(max-width:420px){.kpis{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}}
+@media(max-width:720px){.app{display:block}.sidebar{position:fixed;z-index:40;left:12px;right:12px;top:12px;bottom:auto;height:auto;max-height:78vh;padding:8px;border:1px solid var(--line);border-radius:16px;display:flex;flex-direction:column;gap:7px;background:#0c1022f8;box-shadow:var(--shadow);overflow:visible}.side-brand,.side-bottom,.side-group-label{display:none}.mobile-logout{display:inline-flex}.mobile-menu-toggle{display:flex;align-items:center;justify-content:flex-start;gap:10px;width:100%;min-height:44px;padding:10px 13px;border:1px solid var(--line);border-radius:11px;background:#151a32;color:var(--text);font-weight:750;text-align:left}.mobile-menu-symbol{font-size:17px}.mobile-menu-label{flex:1}.mobile-menu-chevron{margin-left:auto}.side-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;min-width:0;max-height:0;opacity:0;visibility:hidden;overflow:hidden;padding-top:0;transition:max-height .22s ease,opacity .16s ease,padding-top .22s ease,visibility 0s linear .22s}.sidebar.mobile-expanded .side-nav{max-height:58vh;opacity:1;visibility:visible;overflow-y:auto;padding-top:2px;transition:max-height .22s ease,opacity .16s ease,padding-top .22s ease,visibility 0s}.nav-btn{display:grid;gap:2px;min-height:44px;padding:8px 4px;font-size:10px;justify-items:center;min-width:0;border:1px solid transparent}.nav-btn .ico{font-size:16px}.nav-text{display:block;text-align:center}.main{padding:88px 13px 24px}.topbar{height:62px;margin-bottom:16px}.topbar h2{font-size:15px}.top-actions{gap:5px}.icon-btn{min-width:40px;height:40px}.avatar-btn{width:40px;height:40px}.kpis{gap:8px}.kpi{padding:12px}.kpi strong{font-size:21px}.layout,.section-grid,.profile-layout{grid-template-columns:1fr}.welcome h1{font-size:20px}.panel{padding:14px}.date-strip{gap:4px}.day-card{padding:7px 2px}.day-card .d{font-size:14px}.grid3{grid-template-columns:1fr}.backup-menu-trigger{min-width:40px;font-size:0}.backup-menu-trigger .backup-menu-label{display:none}.backup-menu-panel{right:0;top:calc(100% + 8px);bottom:auto}}
+@media(max-width:420px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi{min-height:112px}.kpi-top{font-size:11px}.kpi-icon{width:30px;height:30px}.kpi small{font-size:10px}.grid2{grid-template-columns:1fr}.auth-card{padding:22px 18px}.auth-card>.lang-toggle{top:22px;right:18px}}
+@media(max-width:720px){
+ .topbar{display:none!important}
+ .mobile-toolbar{display:flex;align-items:center;gap:6px;width:100%}
+ .mobile-toolbar .mobile-menu-toggle{flex:1 1 auto;width:auto;min-width:112px}
+ .mobile-menu-label{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .mobile-toolbar .top-actions{display:flex;flex:0 0 auto;gap:4px}
+ .mobile-toolbar #lockNowBtn,.mobile-toolbar #guideBtn,.mobile-toolbar #mobileLogout{display:none!important}
+ .mobile-toolbar .avatar-btn{width:40px;height:40px}
+ .mobile-toolbar .backup-menu-panel{right:0;top:calc(100% + 8px);bottom:auto}
+ .side-group-label{display:block;grid-column:1/-1;padding:8px 8px 2px;font-size:10px}
+ .side-group-label:not(:first-child){border-top:1px solid var(--line);margin-top:3px;padding-top:9px}
+ .sidebar.mobile-expanded .side-nav{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .side-nav #logoutBtn{display:flex;grid-column:1/-1;justify-content:flex-start;gap:11px;width:auto!important;margin:4px 0 0!important;padding:10px 12px;font-size:12px;border-top:1px solid var(--line);border-radius:0 0 10px 10px}
+ .side-nav #logoutBtn .nav-text{text-align:left}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
@@ -240,7 +273,7 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
      <button class="icon-btn lang-toggle" id="authLangBtn" type="button" title="Switch language (English / Kinyarwanda)">EN / RW</button>
     </div>
     <div id="loginPane">
-      <h1 data-i18n="welcomeBack">Welcome back</h1><p data-i18n="signInSub">Sign in to open your personal & habit workspace.</p>
+      <h1 data-i18n="welcomeBack">Your student workspace</h1><p data-i18n="signInSub">Plan your studies, build better habits, and make progress every day.</p>
       <form id="loginForm">
         <div class="field"><label for="loginEmail" data-i18n="emailLabel">EMAIL ADDRESS</label><input id="loginEmail" type="email" autocomplete="username" required placeholder="you@example.com"></div>
         <div class="field"><label for="loginPassword" data-i18n="passwordLabel">PASSWORD</label><input id="loginPassword" type="password" autocomplete="current-password" required minlength="8" placeholder="Your password"></div>
@@ -271,25 +304,27 @@ body.light .pill,body.light .streak-pill{background:#f2ebff;color:#5a26a8;border
 <div id="appView" class="app hidden">
  <aside class="sidebar">
   <div class="side-brand"><div class="brand"><img class="brand-mark" src="favico.png" alt="DO YOUR BIT logo"><span class="brand-text">DO YOUR BIT</span></div></div>
-  <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="primaryNav"><span class="mobile-menu-symbol" aria-hidden="true">☰</span><span>Menu</span><span class="mobile-menu-chevron" aria-hidden="true">⌃</span></button>
+  <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="primaryNav"><span class="mobile-menu-symbol" aria-hidden="true">☰</span><span class="mobile-menu-label" id="mobileMenuLabel">Overview</span><span class="mobile-menu-chevron" aria-hidden="true">⌄</span></button>
   <nav class="side-nav" id="primaryNav" aria-label="Primary navigation">
-   <div class="side-group-label" data-i18n="grpDaily">Daily Flow</div>
+   <div class="side-group-label" data-i18n="grpToday">Today</div>
    <button class="nav-btn active" data-section="overview" type="button"><span class="ico">▦</span><span class="nav-text" data-i18n="navOverview">Overview</span></button>
-   <button class="nav-btn" data-section="habits" type="button"><span class="ico">★</span><span class="nav-text" data-i18n="navHabits">My Habits</span></button>
-   <button class="nav-btn" data-section="routines" type="button"><span class="ico">⟳</span><span class="nav-text" data-i18n="navRoutines">Routines</span></button>
-   <button class="nav-btn" data-section="tasks" type="button"><span class="ico">☑</span><span class="nav-text" data-i18n="navTasks">My Tasks</span></button>
-   <div class="side-group-label" data-i18n="grpWorkspace">Workspace</div>
-   <button class="nav-btn" data-section="budget" type="button"><span class="ico">◈</span><span class="nav-text" data-i18n="navBudget">Budget</span></button>
+   <div class="side-group-label" data-i18n="grpStudy">Study</div>
    <button class="nav-btn" data-section="academics" type="button"><span class="ico">▤</span><span class="nav-text" data-i18n="navAcademics">Academics</span></button>
+   <button class="nav-btn" data-section="tasks" type="button"><span class="ico">☑</span><span class="nav-text" data-i18n="navTasks">Tasks & Assignments</span></button>
+   <button class="nav-btn" data-section="routines" type="button"><span class="ico">⟳</span><span class="nav-text" data-i18n="navRoutines">Study Routines</span></button>
+   <div class="side-group-label" data-i18n="grpPersonal">Personal</div>
+   <button class="nav-btn" data-section="habits" type="button"><span class="ico">★</span><span class="nav-text" data-i18n="navHabits">Habits</span></button>
    <button class="nav-btn" data-section="goals" type="button"><span class="ico">◎</span><span class="nav-text" data-i18n="navGoals">Goals</span></button>
-   <button class="nav-btn" data-section="categories" type="button"><span class="ico">❖</span><span class="nav-text" data-i18n="navCategories">Categories</span></button>
-   <div class="side-group-label" data-i18n="grpInsights">Insights & Security</div>
+   <button class="nav-btn" data-section="budget" type="button"><span class="ico">◈</span><span class="nav-text" data-i18n="navBudget">Budget</span></button>
+   <div class="side-group-label" data-i18n="grpInsightsSettings">Insights & Settings</div>
    <button class="nav-btn" data-section="statistics" type="button"><span class="ico">⚡</span><span class="nav-text" data-i18n="navStatistics">Statistics</span></button>
+   <button class="nav-btn" data-section="categories" type="button"><span class="ico">❖</span><span class="nav-text" data-i18n="navCategories">Categories</span></button>
    <button class="nav-btn" data-section="profile" type="button"><span class="ico">◉</span><span class="nav-text" data-i18n="navSettings">Settings & PIN</span></button>
+   <div class="side-group-label mobile-account-label" data-i18n="grpAccount">Account</div>
+   <button id="logoutBtn" class="nav-btn" type="button"><span class="ico">↪</span><span class="nav-text" data-i18n="signOut">Sign out</span></button>
   </nav>
   <div class="side-bottom">
    <div class="user-mini"><img id="sideAvatar" alt="Profile"><div class="user-info"><strong id="sideName">User</strong><small id="sideEmail">email</small></div></div>
-   <button id="logoutBtn" class="nav-btn" style="width:100%;margin-top:8px" type="button"><span class="ico">↪</span><span class="nav-text" data-i18n="signOut">Sign out</span></button>
   </div>
  </aside>
 
@@ -648,10 +683,10 @@ const defaultAvatar = 'favico.png';
 /* ENGLISH & KINYARWANDA DICTIONARY */
 const I18N = {
  en: {
-  welcomeBack:'Welcome back',signInSub:'Sign in to open your personal & habit workspace.',emailLabel:'EMAIL ADDRESS',passwordLabel:'PASSWORD',signInBtn:'Sign in to DO YOUR BIT',forgotPw:'Forgot password?',newHere:'New here?',createAccLink:'Create an account',googleSignIn:'Continue with Google',
+  welcomeBack:'Your student workspace',signInSub:'Plan your studies, build better habits, and make progress every day.',emailLabel:'EMAIL ADDRESS',passwordLabel:'PASSWORD',signInBtn:'Sign in to DO YOUR BIT',forgotPw:'Forgot password?',newHere:'New here?',createAccLink:'Create an account',googleSignIn:'Continue with Google',
   createAccTitle:'Create your account',createAccSub:'Create your secure account and sync your workspace across devices.',profilePic:'Profile picture',fullNameLabel:'FULL NAME',courseLabel:'COURSE / ROLE',yearLabel:'YEAR / LEVEL',createPwLabel:'CREATE PASSWORD (8+ CHARACTERS)',confirmPwLabel:'CONFIRM PASSWORD',createWorkspaceBtn:'Create my workspace',alreadyHave:'Already have an account?',signInLink:'Sign in',
-  grpDaily:'Daily Flow',grpWorkspace:'Workspace',grpInsights:'Insights & Security',
-  navOverview:'Overview',navHabits:'My Habits',navRoutines:'Routines',navTasks:'My Tasks',navBudget:'Budget',navAcademics:'Academics',navGoals:'Goals',navCategories:'Categories',navStatistics:'Statistics',navSettings:'Settings & PIN',signOut:'Sign out',
+  grpToday:'Today',grpStudy:'Study',grpPersonal:'Personal',grpInsightsSettings:'Insights & Settings',grpAccount:'Account',
+  navOverview:'Overview',navHabits:'Habits',navRoutines:'Study Routines',navTasks:'Tasks & Assignments',navBudget:'Budget',navAcademics:'Academics',navGoals:'Goals',navCategories:'Categories',navStatistics:'Statistics',navSettings:'Settings & PIN',signOut:'Sign out',
   overviewSub:'Here’s your personal habits, tasks, and progress at a glance.',kpiHabits:'Habits today',kpiHabitsSub:'Daily habits completed',kpiTasks:'Open tasks',kpiTasksSub:'Tasks still to complete',kpiBudget:'Planned expenses',kpiBudgetSub:'RWF total recorded',kpiGoals:'Goals completed',kpiGoalsSub:'Your goal completion rate',
   todaysHabits:"Today's Habits",tapCheckSub:'Tap to check off or log progress',openHabits:'Open Habits →',weeklyAct:'Weekly activity',weeklyActSub:'Tasks & habits completed this week',thisWeek:'THIS WEEK',dailyComp:'Daily completions',manageWs:'Manage your workspace',quickActions:'Quick actions',
   qaHabit:'Track a habit',qaRoutine:'Start a routine',qaTask:'Add a task',qaExpense:'Record expense',priorityTasks:'Priority tasks',seeAll:'See all',focusToday:'Focus for today',focusQuote:'Small consistent steps create meaningful progress. Keep your daily streaks alive.',
@@ -666,10 +701,10 @@ const I18N = {
   profileTitle:'My profile & settings',profileSub:'Click your photo to view or change it, update your password, or manage security.',securityTitle:'🔐 Password & Account Security',securitySub:'Change your login password or permanently delete your account',newPwLbl:'New Password (8+ chars)',confirmNewPwLbl:'Confirm New Password',updatePwBtn:'Update Password',dangerZoneTitle:'Delete Account & Workspace',dangerZoneSub:'Permanently erase all cloud records and close your session.',deleteAccBtn:'Delete Account',editProfileTitle:'Edit profile',saveProfileBtn:'Save profile'
  },
  rw: {
-  welcomeBack:'Murakaza neza',signInSub:'Injira mu rubuga rwawe rwo gukurikirana imigenzo n’imirimo.',emailLabel:'IMEYILI YAWE',passwordLabel:'IJAMBO RY’IBANGA',signInBtn:'Injira muri DO YOUR BIT',forgotPw:'Wibagiwe ijambo ry’ibanga?',newHere:'Uri mushya hano?',createAccLink:'Fungura konti',googleSignIn:'Komeza ukoresheje Google',
+  welcomeBack:'Urubuga rwawe rw’umunyeshuri',signInSub:'Tegura amasomo yawe, wubake imigenzo myiza, kandi utere imbere buri munsi.',emailLabel:'IMEYILI YAWE',passwordLabel:'IJAMBO RY’IBANGA',signInBtn:'Injira muri DO YOUR BIT',forgotPw:'Wibagiwe ijambo ry’ibanga?',newHere:'Uri mushya hano?',createAccLink:'Fungura konti',googleSignIn:'Komeza ukoresheje Google',
   createAccTitle:'Fungura konti yawe',createAccSub:'Fungura konti irinzwe kandi ibika amakuru yawe kuri interineti.',profilePic:'Ifoto yawe',fullNameLabel:'AMAZINA YOSE',courseLabel:'ISHAMI / UMURIMO',yearLabel:'UMWAKA / URWEGO',createPwLabel:'SHYIRAHO IJAMBO RY’IBANGA (INYUGUTI 8+)',confirmPwLabel:'EMEZA IJAMBO RY’IBANGA',createWorkspaceBtn:'Fungura urubuga rwanjye',alreadyHave:'Usanganywe konti?',signInLink:'Injira',
-  grpDaily:'Ibikorwa bya buri munsi',grpWorkspace:'Urubuga rwanjye',grpInsights:'Imibare n’Umutekano',
-  navOverview:'Incamake',navHabits:'Imigenzo yanjye',navRoutines:'Gahunda',navTasks:'Imirimo yanjye',navBudget:'Ingengo y’imari',navAcademics:'Amasomo',navGoals:'Intego',navCategories:'Ibyiciro',navStatistics:'Imibare (Histogram)',navSettings:'Umwirondoro & PIN',signOut:'Sohoka',
+  grpToday:'Uyu munsi',grpStudy:'Amasomo',grpPersonal:'Ubuzima bwite',grpInsightsSettings:'Imibare n’Igenamiterere',grpAccount:'Konti',
+  navOverview:'Incamake',navHabits:'Imigenzo',navRoutines:'Gahunda zo kwiga',navTasks:'Imirimo n’Imikoro',navBudget:'Ingengo y’imari',navAcademics:'Amasomo',navGoals:'Intego',navCategories:'Ibyiciro',navStatistics:'Imibare (Histogram)',navSettings:'Igenamiterere & PIN',signOut:'Sohoka',
   overviewSub:'Reba incamake y’imigenzo yawe, imirimo n’iterambere ryawe.',kpiHabits:'Imigenzo uyu munsi',kpiHabitsSub:'Imigenzo yarangiye uyu munsi',kpiTasks:'Imirimo itararangira',kpiTasksSub:'Imirimo igitegereje gukorwa',kpiBudget:'Amafaranga ateganyijwe',kpiBudgetSub:'Igiteranyo muri RWF',kpiGoals:'Intego zagezweho',kpiGoalsSub:'Igipimo cy’intego zawe',
   todaysHabits:'Imigenzo y’uyu munsi',tapCheckSub:'Kanda wemeze ibyo warangije',openHabits:'Reba imigenzo →',weeklyAct:'Ibikorwa by’iki cyumweru',weeklyActSub:'Imirimo n’imigenzo byarangiye muri iki cyumweru',thisWeek:'IKI CYUMWERU',dailyComp:'Ibyarangiye buri munsi',manageWs:'Genzura urubuga rwawe',quickActions:'Ibikorwa byihuse',
   qaHabit:'Kurikirana umugenzo',qaRoutine:'Tangira gahunda',qaTask:'Ongeraho umurimo',qaExpense:'Andika ikiguzi',priorityTasks:'Imirimo yihutirwa',seeAll:'Reba byose',focusToday:'Icyo kwibandaho uyu munsi',focusQuote:'Intambwe nto buri munsi zibyara impinduka zikomeye. Komeza imigenzo yawe!',
@@ -695,6 +730,8 @@ function applyLanguage(){
   const k = el.dataset.i18n;
   if(I18N[currentLang]?.[k]) el.textContent = I18N[currentLang][k];
  });
+ const activeNavLabel=document.querySelector('.nav-btn.active[data-section] .nav-text');
+ if(activeNavLabel && $('mobileMenuLabel')) $('mobileMenuLabel').textContent=activeNavLabel.textContent;
  if(active()) renderAll();
 }
 
@@ -930,27 +967,87 @@ function showSection(name){
   statistics:t('statsTitle'),profile:t('profileTitle')
  };
  $('pageTitle').textContent = titleMap[name] || 'DO YOUR BIT';
+ if($('mobileMenuLabel')) $('mobileMenuLabel').textContent = titleMap[name] || 'Menu';
 }
 document.querySelectorAll('[data-section]').forEach(b=>b.addEventListener('click',()=>showSection(b.dataset.section)));
 document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showSection(b.dataset.go)));
 
 const mobileMenuToggle = $('mobileMenuToggle');
 const mobileSidebar = document.querySelector('.sidebar');
-function closeMobileMenu(){
+const mobileTopbarActions = document.querySelector('.topbar .top-actions');
+const primaryNav = $('primaryNav');
+const sideBottom = document.querySelector('.side-bottom');
+const logoutButton = $('logoutBtn');
+const mobileToolbar = document.createElement('div');
+mobileToolbar.className = 'mobile-toolbar';
+
+function syncMobileToolbar(){
+ if(window.innerWidth<=720){
+  if(!mobileToolbar.contains(mobileMenuToggle)){
+   mobileToolbar.append(mobileMenuToggle);
+  }
+  if(!mobileToolbar.contains(mobileTopbarActions)){
+   mobileToolbar.append(mobileTopbarActions);
+  }
+  if(mobileToolbar.parentElement!==mobileSidebar){
+   mobileSidebar.insertBefore(mobileToolbar,mobileSidebar.querySelector('.side-nav'));
+  }
+  if(logoutButton.parentElement!==primaryNav){
+   primaryNav.append(logoutButton);
+  }
+ }else{
+  if(mobileToolbar.parentElement){
+   mobileToolbar.replaceWith(mobileMenuToggle);
+  }
+  if(mobileTopbarActions && mobileTopbarActions.parentElement!==document.querySelector('.topbar')){
+   document.querySelector('.topbar').append(mobileTopbarActions);
+  }
+  if(mobileMenuToggle.parentElement!==mobileSidebar){
+   mobileSidebar.insertBefore(mobileMenuToggle,mobileSidebar.querySelector('.side-nav'));
+  }
+  if(logoutButton.parentElement!==sideBottom){
+   sideBottom.append(logoutButton);
+  }
+ }
+}
+syncMobileToolbar();
+
+function closeMobileMenu(restoreFocus=false){
  if(!mobileSidebar || !mobileMenuToggle) return;
  mobileSidebar.classList.remove('mobile-expanded');
  mobileMenuToggle.setAttribute('aria-expanded','false');
- mobileMenuToggle.querySelector('.mobile-menu-chevron').textContent='⌃';
+ mobileMenuToggle.querySelector('.mobile-menu-chevron').textContent='⌄';
+ if(restoreFocus) mobileMenuToggle.focus();
 }
 if(mobileMenuToggle){
  mobileMenuToggle.addEventListener('click',()=>{
   const expanded=mobileSidebar.classList.toggle('mobile-expanded');
   mobileMenuToggle.setAttribute('aria-expanded',String(expanded));
-  mobileMenuToggle.querySelector('.mobile-menu-chevron').textContent=expanded?'⌄':'⌃';
+  mobileMenuToggle.querySelector('.mobile-menu-chevron').textContent=expanded?'⌃':'⌄';
+  if(expanded){
+   requestAnimationFrame(()=>{
+    const activeItem=mobileSidebar.querySelector('.nav-btn.active[data-section]');
+    (activeItem||mobileSidebar.querySelector('.nav-btn[data-section]'))?.focus();
+   });
+  }
  });
 }
-document.querySelectorAll('.nav-btn[data-section]').forEach(b=>b.addEventListener('click',closeMobileMenu));
-window.addEventListener('resize',()=>{if(window.innerWidth>720)closeMobileMenu()});
+document.querySelectorAll('.nav-btn[data-section]').forEach(b=>b.addEventListener('click',()=>closeMobileMenu(false)));
+document.addEventListener('pointerdown',e=>{
+ if(window.innerWidth<=720 && mobileSidebar?.classList.contains('mobile-expanded') && !mobileSidebar.contains(e.target)){
+  closeMobileMenu(true);
+ }
+});
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape' && window.innerWidth<=720 && mobileSidebar?.classList.contains('mobile-expanded')){
+  e.preventDefault();
+  closeMobileMenu(true);
+ }
+});
+window.addEventListener('resize',()=>{
+ syncMobileToolbar();
+ if(window.innerWidth>720)closeMobileMenu(false);
+});
 
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function money(n){return Number(n||0).toLocaleString('en-US')+' RWF'}
